@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fffff" />
+    <meta name="description"
+          content="Pagina de ventas hecho en base al template de Simple House." />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+    <title>Aaadir un producto</title>
+    <link href="/css/styles.css" rel="stylesheet" />
+    <link href="/css/all.min.css" rel="stylesheet" />
+</head>
+<body>
+    <main class="container">
+        <ul>
+            <li><a href="/">Tienda</a></li>
+            <li><a href="/admin/add-product">Aaadir producto</a></li>
+        </ul>
+        <header class="row tm-welcome-section">
+            <h2 class="col-12 text-center tm-section-title">Te damos la bienvenida a Restochico</h2>
+            <p class="col-12 text-center">Aca vas a encontrar nuestro mena con precios actualizados, informacian para contactarnos y nuestra historia.</p>
+        </header>
+
+        <div class="tm-paging-links">
+            <nav>
+                <ul>
+                    <li class="tm-paging-item"><a href="#" class="tm-paging-link active">Pizza</a></li>
+                    <li class="tm-paging-item"><a href="#" class="tm-paging-link">Salad</a></li>
+                    <li class="tm-paging-item"><a href="#" class="tm-paging-link">Noodle</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <!-- Gallery-->
+        <div class="row tm-gallery">
+            <!-- gallery page 1-->
+            <div id="tm-gallery-page-pizza" class="tm-gallery-page">
+                props.children
+            </div> <!-- gallery page 1-->
+            <!-- gallery page 2-->
+            <div id="tm-gallery-page-salad" class="tm-gallery-page hidden">
+                props.children
+
+            </div> <!-- gallery page 2-->
+            <!-- gallery page 3-->
+            <div id="tm-gallery-page-noodle" class="tm-gallery-page hidden">
+                props.children<!--En app.js le paso los props (los genera con .map) y ahora me refiero a ellos como props.children-->
+
+            </div> <!-- gallery page 3-->
+        </div>
+        <div class="tm-section tm-container-inner">
+            <div class="row">
+                <div class="col-md-6">
+                    <figure class="tm-description-figure">
+                        <img src="img/img-01.jpg" alt="Image" class="img-fluid" />
+                    </figure>
+                </div>
+                <div class="col-md-6">
+                    <div class="tm-description-box">
+                        <h4 class="tm-gallery-title">Visitanos</h4>
+                        <p class="tm-mb-45">Restochico es un restaurante clasico e inclusivo. Ofrecemos opciones veganas, vegetarianas y omnavoras, nuestros platos principales son nutritivos y saciadores. En Restochico creemos que la base de una buena comida se encuentra en la calidad de los ingredientes que la componen. Por eso, nuestros proveedores nos ofrecen productos frescos que son sanitizados y cocinados con suma atencian.</p>
+                        <a href="/Contacto" class="tm-btn tm-btn-default tm-right">Encontranos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+        <footer class="tm-footer text-center">
+            <p>
+                Copyright &copy; 2020 Simple House
+
+                | Design: <a rel="nofollow" href="https://templatemo.com">TemplateMo</a>
+            </p>
+        </footer>
+</body>
+</html>

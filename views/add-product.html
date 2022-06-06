@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#fffff" />
+    <meta name="description"
+          content="Página de ventas hecho en base al template de Simple House." />
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400" rel="stylesheet" />
+    <title>Añadir un producto</title>
+    <link href="/css/all.min.css" rel="stylesheet" />
+    <link href="/css/styles.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <ul>
+            <li><a href="/">Tienda</a></li>
+            <li><a href="/admin/add-product">Añadir producto</a></li>
+        </ul>
+    </header>
+    <main>
+        <section>
+            <form action="/admin/add-product" method="POST" name="newProduct">
+                <input type="text" placeholder="Nombre del producto" name="title">
+                <button type="submit">Añadir producto</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
