@@ -1,0 +1,23 @@
+extends layouts/mainLayout.pug
+
+block pageTitle
+    title Modificar productos
+
+block content
+    div.row.tm-gallery
+        div.tm-gallery-page(id="tm-gallery-page-pizza")
+            if productos.length > 0
+                each menuItem in productos
+                    article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
+                        figure
+                            img.img-fluid.tm-gallery-img(src="https://www.cocinayvino.com/wp-content/uploads/2016/11/48507368_ml-e1480356693520-1200x675.jpg", alt="img")
+                            figcaption
+                                h4.tm-gallery-title #{menuItem.title}
+                                p.tm-gallery-description #{menuItem.description}
+                                p.tm-gallery-price #{menuItem.price}
+                                a.tm-gallery-price(href="/admin/edit-product") Editar
+                                form(action="/admin/delete-product" method="POST") 
+                                    button.productCardBtn(type="submit") Eliminar
+            else 
+                h4 No hay productos disponibles
+                            

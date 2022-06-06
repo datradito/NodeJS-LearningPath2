@@ -1,0 +1,25 @@
+extends layouts/mainLayout.pug
+
+block pageTitle
+    title Editar un producto
+block content
+        h1 Editar un producto
+        section
+            form(action="/admin/add-product", method="POST", name="newProduct")
+                div.inputCtn
+                    label(for="title") Nombre
+                    input(type="text", placeholder="Nombre del producto", name="title")
+                div.inputCtn
+                    label(for="description") Descripción
+                    textarea(type="text", placeholder="Descripción del producto", name="description", rows="10")
+                div.inputCtn
+                    label(for="price") Precio
+                    input(type="number", placeholder="Precio del producto", name="price")
+                div.inputCtn
+                    label(for="img") Foto
+                    input(type="text", placeholder="Imagen del producto", name="img")
+                div.inputCtn                  
+                    label(for="tag") Clasificación
+                    input(type="text", placeholder="Clasificación del producto", name="tag")
+
+                button(type="submit") Añadir producto

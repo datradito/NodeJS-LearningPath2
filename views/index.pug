@@ -1,0 +1,53 @@
+extends layouts/mainLayout.pug
+
+block pageTitle
+    title Tienda
+
+block content
+            header.row.tm-welcome-section
+                h2.col-12.text-center.tm-section-title Te damos la bienvenida a Restochico
+                p.col-12.text-center Acá vas a encontrar nuestro menú con precios actualizados, información para contactarnos y nuestra historia.
+
+            div.tm-paging-links
+                nav
+                    ul
+                        li.tm-paging-item
+                            a.tm-paging-link.active(href="#") Pizza
+                        li.tm-paging-item
+                            a.tm-paging-link(href="#") Ensalada
+                        li.tm-paging-item 
+                            a.tm-paging-link(href="#") Fideos
+                        
+            div.row.tm-gallery
+                div.tm-gallery-page(id="tm-gallery-page-pizza")
+                    if productos.length > 0
+                        each menuItem in productos
+                            article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
+                                figure
+                                    img.img-fluid.tm-gallery-img(src="https://www.cocinayvino.com/wp-content/uploads/2016/11/48507368_ml-e1480356693520-1200x675.jpg", alt="img")
+                                    figcaption
+                                        h4.tm-gallery-title #{menuItem.title}
+                                        p.tm-gallery-description #{menuItem.description}
+                                        p.tm-gallery-price #{menuItem.price}
+                                        form(action="/add-to-cart" method="POST") 
+                                            button.productCardBtn(type="submit") Agregar al carrito
+                    else 
+                        h4 No hay productos disponibles
+                                
+            div
+                div.tm-gallery-page.hidden(id="tm-gallery-page-salad")
+            div
+                div.tm-gallery-page.hidden(id="tm-gallery-page-noodle")
+
+            div
+                div.tm-section.tm-container-inner
+                    div.row
+                        div.col-md-6
+                            figure.tm-description-figure
+                                img.img-fluid(src="img/img-01.jpg", alt="Image")
+                    div
+                        div.col-md-6
+                            div.tm-description-box
+                                h4.tm-gallery-title Visitanos
+                                p.tm-mb-45 Restochico es un restaurante clasico e inclusivo. Ofrecemos opciones veganas, vegetarianas y omnavoras, nuestros platos principales son nutritivos y saciadores. En Restochico creemos que la base de una buena comida se encuentra en la calidad de los ingredientes que la componen. Por eso, nuestros proveedores nos ofrecen productos frescos que son sanitizados y cocinados con suma atención.
+                                a(href="/Contacto").tm-btn.tm-btn-default.tm-right Encontranos

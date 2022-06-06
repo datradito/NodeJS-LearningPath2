@@ -850,3 +850,7 @@ address {
     .panel p {
         padding: 5px 20px 30px;
     }
+
+.inputCtn label, .inputCtn input{
+    display: block;
+}

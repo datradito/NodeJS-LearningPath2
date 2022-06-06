@@ -1,16 +1,13 @@
 //Lo que el admin puede ver, handle the creational codes
-//Routes are reached in /admin/route
+//These routes are reached in /admin/route
 const path = require('path');
-
 const express = require('express');
 const router = express.Router();
+const productsController = require('../controllers/products');
 
-router.get('/add-product', (req, res, next) => {
-    res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
-});
-router.post('/add-product', (req, res, next) => {
-    console.log(req.body);
-    res.sendFile(path.join(__dirname, '..', 'views', 'add-product.html'));
-});
+router.get('/add-product', productsController.getAddProduct);
+router.post('/add-product', productsController.postAddProduct);
+router.get('/edit-product', productsController.editProduct);
+router.get('/modify-products', productsController.modifyProducts);
 
 module.exports = router;
