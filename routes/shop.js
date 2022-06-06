@@ -6,6 +6,7 @@ const userController = require('../controllers/user');
 
 const router = express.Router();
 
+router.get('/edit-product/:platilloId', productsController.editProduct);// : this indicates that it shouldn't look for a given route because platilloId may vary
 router.get('/comprar', userController.getCheckout);
 router.get('/cart', userController.getCart);
 router.get('/register', userController.getRegister);

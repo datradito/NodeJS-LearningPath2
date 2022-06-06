@@ -24,5 +24,7 @@ exports.modifyProducts = (req, res, next) => {
     res.render('modify-products', {productos: menu});
 }
 exports.editProduct = (req, res, next) => {
-    res.render('edit-product');
+    const platilloId = req.params.platilloId;//Extraigo el Id desde la url de edit-product
+    const productoEditar = Product.findById(platilloId);
+    res.render('edit-product', {productoEditar: productoEditar});
 }

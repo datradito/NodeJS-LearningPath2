@@ -15,7 +15,7 @@ block content
                                 h4.tm-gallery-title #{menuItem.title}
                                 p.tm-gallery-description #{menuItem.description}
                                 p.tm-gallery-price #{menuItem.price}
-                                a.tm-gallery-price(href="/admin/edit-product") Editar
+                                a.tm-gallery-price(href='/edit-product/'+ menuItem.id) Editar
                                 form(action="/admin/delete-product" method="POST") 
                                     button.productCardBtn(type="submit") Eliminar
             else 

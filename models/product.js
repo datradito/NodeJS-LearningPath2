@@ -12,6 +12,7 @@ module.exports = class Product {
         this.tag = tag;
     }
     save(){
+        this.id = Math.random().toString();
         fs.readFile(pathJSON, (err, fileContent) => {
             let menuItems = []
             if (!err) {
@@ -26,7 +27,9 @@ module.exports = class Product {
     static fetchAll() {
         return menuItems;
     }
+    static findById(id){
+        const platilloEncontrado = menuItems.find(i => i.id === id);
+    }
 }
 /*this.img = img;
-    this.id=7,
   */

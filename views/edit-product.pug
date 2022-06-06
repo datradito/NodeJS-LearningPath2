@@ -3,7 +3,7 @@ extends layouts/mainLayout.pug
 block pageTitle
     title Editar un producto
 block content
-        h1 Editar un producto
+        h1 Editar el producto #{productoEditar.title}
         section
             form(action="/admin/add-product", method="POST", name="newProduct")
                 div.inputCtn
