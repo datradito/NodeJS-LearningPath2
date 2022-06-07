@@ -24,13 +24,14 @@ block content
                         each menuItem in productos
                             article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
                                 figure
-                                    img.img-fluid.tm-gallery-img(src="https://www.cocinayvino.com/wp-content/uploads/2016/11/48507368_ml-e1480356693520-1200x675.jpg", alt="img")
+                                    img.img-fluid.tm-gallery-img(src=menuItem.img, alt="img")
                                     figcaption
                                         h4.tm-gallery-title #{menuItem.title}
                                         p.tm-gallery-description #{menuItem.description}
-                                        p.tm-gallery-price #{menuItem.price}
-                                        form(action="/add-to-cart" method="POST") 
+                                        p.tm-gallery-price $ #{menuItem.price}
+                                        form(action="/cart" method="POST") 
                                             button.productCardBtn(type="submit") Agregar al carrito
+                                            input(type="hidden" name="productId" value=menuItem.id)
                     else 
                         h4 No hay productos disponibles
                                 

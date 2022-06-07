@@ -11,7 +11,8 @@ exports.postAddProduct = (req, res, next) => {
         req.body.description, 
         req.body.price, 
         req.body.img, 
-        req.body.tag
+        req.body.tag,
+        null
     );
     platillo.save();
     res.render('add-product');
@@ -24,7 +25,26 @@ exports.modifyProducts = (req, res, next) => {
     res.render('modify-products', {productos: menu});
 }
 exports.editProduct = (req, res, next) => {
-    const platilloId = req.params.platilloId;//Extraigo el Id desde la url de edit-product
-    const productoEditar = Product.findById(platilloId);
-    res.render('edit-product', {productoEditar: productoEditar});
+    const isEditEnabled = req.query.edit;
+    if (!isEditEnabled) {
+        return res.redirect('/');
+    }
+    const platilloId = req.params.platilloId;//Extraigo el Id desde la url de edit-product    
+    const platilloEncontrado = Product.findById(platilloId);
+    res.render('edit-product', {
+        platilloEncontrado: platilloEncontrado,
+        editing: isEditEnabled
+    });
+}
+exports.postEditProduct = (req, res, next) => {
+    const platilloId = req.body.input_platilloId;
+    //updated values obtained in edit-product
+    const updatedTitle = req.body.title;
+    const updatedDescription = req.body.description;
+    const updatedPrice = req.body.price;
+    const updatedImage = req.body.img;
+    const updatedTag = req.body.tag;
+    const updatedPlatillo = new Product(updatedTitle, updatedDescription, updatedPrice, updatedImage, updatedTag, platilloId);
+    updatedPlatillo.save();
+    res.redirect('/');
 }
