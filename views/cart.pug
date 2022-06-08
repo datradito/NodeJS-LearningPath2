@@ -5,6 +5,11 @@ block pageTitle
 
 block content
     h1 Carrito
-    section 
-        h3 El carrito está vacío
-        a(href="/comprar") Terminar la compra
+    if cartProducts.length > 0
+        section 
+            h3 El carrito está lleno
+            a(href="/comprar") Terminar la compra
+    else
+        section 
+            h3 El carrito está vacío
+            a(href="/comprar") Terminar la compra   

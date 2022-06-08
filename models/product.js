@@ -1,4 +1,5 @@
 const fs = require('fs');
+const Cart = require('./cart');
 const pathJSON = './data/menu.json';
 const menuJson = fs.readFileSync(pathJSON);
 const menuItems = JSON.parse(menuJson);
@@ -25,10 +26,8 @@ module.exports = class Product {
                 fs.writeFile(pathJSON, JSON.stringify(updatedProduct), (err) =>{
                     console.log(err);
                 });
-                console.log('tuki'+ this.id);
 
             } else {
-                console.log('else'+ this.id);
                 this.id = Math.random().toString();
                 menuItems.push(this);
                 fs.writeFile(pathJSON, JSON.stringify(menuItems), (err) =>{
@@ -36,12 +35,17 @@ module.exports = class Product {
                 });
             }
         })
-    };
-    delete(id) {
+    }
+    static delete(id){
         fs.readFile(pathJSON, (err, fileContent) => {
-            let menuItems = []
+            let menuItems = [];
+            menuItems = JSON.parse(fileContent);
+            const menuItem = menuItems.find(i => i.id === id);
             const updatedMenuItems = menuItems.filter(i => i.id !== id);//Guardo todos menos el que coincide
-            fs.writeFile(pathJSON, JSON.stringify(updatedMenuItems), (err) =>{
+            fs.writeFile(pathJSON, JSON.stringify(updatedMenuItems), err =>{
+                if(!err) {
+                    Cart.deleteProduct(id, menuItem.price);
+                }
                 console.log(err);
             });
         })

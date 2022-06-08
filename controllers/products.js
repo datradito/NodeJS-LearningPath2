@@ -49,14 +49,7 @@ exports.postEditProduct = (req, res, next) => {
     res.redirect('/');
 }
 exports.postDeleteProduct = (req, res, next) => {
-    const platilloId = req.body.input_platilloId;
-    //updated values obtained in edit-product
-    const updatedTitle = req.body.title;
-    const updatedDescription = req.body.description;
-    const updatedPrice = req.body.price;
-    const updatedImage = req.body.img;
-    const updatedTag = req.body.tag;
-    const updatedPlatillo = new Product(updatedTitle, updatedDescription, updatedPrice, updatedImage, updatedTag, platilloId);
-    updatedPlatillo.save();
-    res.redirect('/');
+    const platilloId = req.body.productId;
+    const deleteProductById = Product.delete(platilloId);
+    res.redirect('/admin/modify-products');
 }

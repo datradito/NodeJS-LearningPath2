@@ -32,16 +32,20 @@ module.exports = class Cart {
             if (err) {
                 return;
             }
-            const updatedCart ={...cart};
+            const updatedCart ={...JSON.parse(fileContent)};
             const product = updatedCart.products.findIndex(prod => prod.id === id);
             const productQuantity = product.quantity;
             updatedCart.products = updatedCart.products.filter(prod => prod.id !== id)
             updatedCart.totalPrice = updatedCart.totalPrice - productPrice * productQuantity;
-            updatedCart = JSON.parse(fileContent);
 
             fs.writeFile(pathJSON, JSON.stringify(updatedCart), err => {
                 console.log(err);
             });
         });
     };
+    static fetchCart() {
+        const cartJson = fs.readFileSync(pathJSON);
+        const cartItems = JSON.parse(cartJson);
+        return cartItems;
+    }
 }

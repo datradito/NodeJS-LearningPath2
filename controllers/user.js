@@ -14,7 +14,17 @@ exports.postCart = (req, res, next) => {
     res.redirect('/cart');
 };
 exports.getCart = (req, res, next) => {
-    res.render('cart');
+    const cartItems = Cart.fetchCart();
+    console.log(cartItems);
+    const menuItems = Product.fetchAll(); 
+    const cartProducts = [];
+    for (item of menuItems) {
+        const cartProductData = cartItems.products.find(i => i.id === item.id);
+        if(cartProductData){
+            cartProducts.push({itemData: item, quantity: cartProductData.quantity});
+        }
+    }
+    res.render('cart',{ cartProducts: cartProducts });
 };
 exports.getCheckout = (req, res, next) => {
     res.render('comprar');
