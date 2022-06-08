@@ -11,7 +11,13 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-
+  const direccion = req.body.direccion;
+  const empresa = req.body.empresa;
+  const fechadevencimiento = req.body.fechadevencimiento;
+  const imageUrl = req.body.imageUrl;
+  const price = req.body.price;
+  const description = req.body.description;
+  const product = new Product(direccion, empresa, fechadevencimiento, imageUrl, description, price);
   product.save();
   res.redirect('/');
 };
