@@ -1,9 +1,9 @@
 const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-    res.render('admin/add-product', {
+    res.render('admin/edit-product', {
         pageTitle: 'Agregar Producto',
-        path: '/admin/add-product',
+        path: '/admin/edit-product',
         editing: false
     });
 };
@@ -84,7 +84,7 @@ exports.postEditProduct = (req, res, next) => {
 exports.postDeleteProduct = (req, res, next) => {
     const prodId = req.body.ProductId;
     Product.findByPk(prodId)
-        .then( product => product.destroy())
+        .then( product => console.log(product))
         .then( result => {
             console.log('Producto eliminado con éxito');
             res.redirect('/admin/products');
