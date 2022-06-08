@@ -1,0 +1,86 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    /* margin:0 3%; */
+    font-family: 'Lato', sans-serif;
+    list-style: none;
+    text-align: center;
+    justify-items: center;
+}
+header, footer{
+    width: 100%;
+    height: 3rem;
+    background-color: rgb(145, 33, 25);
+    justify-content: center;
+}
+footer{
+    color: rgb(255, 255, 255);
+}
+main{
+    margin: 3em 0;
+}
+nav{
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+ul{
+    display: flex;
+    width: 100%;
+    flex-direction: row;
+    list-style: none;
+}
+li{
+    margin: 1.5em;
+}
+header ul{
+    display: flex;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+header li{
+    margin: 0 1rem;
+    padding: 0;
+}
+span{
+    color: rgb(255, 0, 0);
+}
+a{
+    color: rgb(255, 255, 255);
+    transform: none;
+    font-style: normal;
+    text-decoration: none;
+}
+a:hover, button:hover{
+    color: rgb(148, 215, 226);
+}
+button{
+    text-decoration: none;
+    border: none;
+    background-color: rgb(180, 61, 25);
+    color: white;
+    padding: 0.5em 1em;
+    border-radius: 6px;
+}
+.err{
+    font-style: oblique;
+    font-weight: bolder;
+}
+.products>li{
+    background-color: rgb(216, 216, 216);
+}
+.form-edit-add{
+    margin: 4% 10%;
+    width: 80%;
+    text-align: justify;
+}
+.cart-number{
+    background-color: rgb(197, 7, 7);
+    color: rgb(255, 255, 255);
+    padding: 0.4em 1em;
+}
