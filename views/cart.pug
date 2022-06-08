@@ -6,10 +6,22 @@ block pageTitle
 block content
     h1 Carrito
     if cartProducts.length > 0
-        section 
-            h3 El carrito está lleno
-            a(href="/comprar") Terminar la compra
+        div.row.tm-gallery
+            div.tm-gallery-page
+                each i in cartProducts
+                    article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
+                        figure
+                            img.img-fluid.tm-gallery-img(src=i.itemData.img, alt="img")
+                            figcaption
+                                h4.tm-gallery-title #{i.itemData.title}
+                                p.tm-gallery-description #{i.itemData.description}
+                                p.tm-gallery-price $ #{i.itemData.price}
+                                form(action="/delete-fromCart" method="POST") 
+                                    button.productCardBtn(type="submit") Eliminar del carrito
+                                    input(type="hidden" name="productId" value=i.itemData.id)
+                
+        a(href="/comprar") Terminar la compra
     else
         section 
             h3 El carrito está vacío
-            a(href="/comprar") Terminar la compra   
+            a(href="/") Ver productos   

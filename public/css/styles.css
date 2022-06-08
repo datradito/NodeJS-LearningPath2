@@ -1,6 +1,45 @@
+/*Añadidas por mí*/
+main > ul:first-of-type li {
+    display: inline-block;
+    margin-left: 20px;
+    text-align: center;
+} main > ul:first-of-type {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: sticky;
+    top: 0px;
+    left: 0px;
+    background-color: #fff;
+    border-bottom: 1px solid #181818a3;
+    padding: 10px 0px;
+    z-index: 5;
+} .productCardBtn {
+    background-color: transparent;
+    border: 2px solid #2F956D;
+    border-radius: 2.5px;
+    color: #2F956D;
+    padding: 0.5rem 1rem;
+}  .productCardBtn:hover {
+    background-color: #2F956D;
+    color: #fff;
+} .tm-gallery-item figcaption {
+    padding: 0px 10px 40px;
+} .tm-gallery-item figcaption > form {
+    display: flex;
+    justify-content: center;
+}.tm-gallery-item figure {
+    border: 0.5px solid #556e5b2e;
+    padding: 0px;
+    border-radius: 10px;
+    margin: 0%;
+    height: 500px;
+}
+
 /* Simple House https://templatemo.com/tm-539-simple-house */
 
-ul, nav, body, h1, h2, h4, h6, p, figure {
+ul, nav, body, h1, h2, h4, h6, p{
     margin: 0;
     padding: 0;
 }
@@ -8,7 +47,6 @@ ul, nav, body, h1, h2, h4, h6, p, figure {
 a, button {
     transition: all 0.3s ease;
 }
-
 /* Bootstrap grid system  */
 
 html {
@@ -27,6 +65,10 @@ html {
     max-width: 1200px;
     margin-right: auto;
     margin-left: auto;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .tm-container-inner,
@@ -193,10 +235,6 @@ body {
     font-size: 17px;
     background-color: rgb(255, 255, 255);
     overflow-x: hidden;
-}
-
-.container {
-    background-color: white;
 }
 
 p, address {
@@ -384,10 +422,19 @@ p, address {
 
 .tm-gallery-item {
     max-width: 280px;
+    margin-bottom: 50px;
 }
 
 .tm-gallery-img {
     margin-bottom: 20px;
+    height: 150px;
+    width: 100%;
+}
+.tm-gallery-img > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center center;
 }
 
 .tm-gallery-title {
@@ -404,7 +451,7 @@ p, address {
 .tm-gallery-price {
     font-size: 1.25rem;
     color: #2F956D;
-    margin-bottom: 60px;
+    margin-bottom: 20px;
 }
 
 .tm-paging-links {

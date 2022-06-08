@@ -1,10 +1,12 @@
 extends layouts/mainLayout.pug
+block styles
+    link(href="/css/form.css", rel="stylesheet")
 
 block pageTitle
     title Añadir productos al menú
 block content
         section
-            form(action="/admin/add-product", method="POST", name="newProduct")
+            form.formPage(action="/admin/add-product", method="POST", name="newProduct")
                 div.inputCtn
                     label(for="title") Nombre
                     input(type="text", placeholder="Nombre del producto", name="title")
@@ -19,6 +21,10 @@ block content
                     input(type="text", placeholder="Imagen del producto", name="img")
                 div.inputCtn                  
                     label(for="tag") Clasificación
-                    input(type="text", placeholder="Clasificación del producto", name="tag")
+                    select(name="tag")
+                        option(value="Clasificación del producto", hidden, disabled, selected) Clasificación del producto
+                        option(value="Entrada") Entrada
+                        option(value="Principal") Principal
+                        option(value="Postre") Postre
 
-                button(type="submit") Añadir producto
+                button.productCardBtn(type="submit") Añadir producto

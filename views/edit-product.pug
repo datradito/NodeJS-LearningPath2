@@ -1,11 +1,13 @@
 extends layouts/mainLayout.pug
+block styles
+    link(href="/css/form.css", rel="stylesheet")
 
 block pageTitle
     title Editar un producto
 block content
         h1 Editar el producto # #{platilloEncontrado.id}
         section
-            form(action="/admin/edit-product", method="POST", name="newProduct")
+            form.formPage(action="/admin/edit-product", method="POST", name="newProduct")
                 div.inputCtn
                     label(for="title") Nombre: 
                     input(type="text", value=platilloEncontrado.title, name="title")
@@ -21,8 +23,22 @@ block content
                     input(type="text", value=platilloEncontrado.img, name="img")
                 div.inputCtn                  
                     label(for="tag") Clasificación:
-                    input(type="text", value=platilloEncontrado.tag, name="tag")
+                    select(name="tag")
+                        if platilloEncontrado.tag == 'Entrada'
+                            option(value="Entrada", selected) Entrada
+                        else 
+                            option(value="Entrada") Entrada
+                        
+                        if platilloEncontrado.tag == 'Principal'
+                            option(value="Principal", selected) Principal
+                        else 
+                            option(value="Principal") Principal
+                        
+                        if platilloEncontrado.tag == 'Postre'
+                            option(value="Postre", selected) Postre
+                        else 
+                            option(value="Postre") Postre
                 
                 input(type="hidden", value=platilloEncontrado.id, name="input_platilloId")
 
-                button(type="submit") Editar producto
+                button.productCardBtn(type="submit") Editar producto

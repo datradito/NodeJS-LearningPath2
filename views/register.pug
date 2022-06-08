@@ -1,16 +1,19 @@
 extends layouts/mainLayout.pug
+block styles
+    link(href="/css/form.css", rel="stylesheet")
 
 block pageTitle
     title Registrarse
+
 block content
         h1 Registrarse
         section
-            form(action="", method="POST", name="newUser")
+            form.formPage(action="", method="POST", name="newUser")
                 input(type="text", placeholder="Nombre", name="nameUser")
                 input(type="text", placeholder="Apellido", name="lastNameUser")
                 input(type="text", placeholder="Mail", name="emailUser")
                 input(type="text", placeholder="New Password", name="passUser")
 
-                button(type="submit") Registrarse
-            a(href="/log-in") Iniciar sesión
+                button.productCardBtn(type="submit") Registrarse
+            a(href="/log-in") o iniciar sesión
             

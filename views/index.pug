@@ -1,3 +1,5 @@
+
+
 extends layouts/mainLayout.pug
 
 block pageTitle
@@ -12,33 +14,65 @@ block content
                 nav
                     ul
                         li.tm-paging-item
-                            a.tm-paging-link.active(href="#") Pizza
+                            a.tm-paging-link.active(href="#") Entrada
                         li.tm-paging-item
-                            a.tm-paging-link(href="#") Ensalada
+                            a.tm-paging-link(href="#", id="postresCategory") Principal
                         li.tm-paging-item 
-                            a.tm-paging-link(href="#") Fideos
-                        
+                            a.tm-paging-link(href="#") Postre
+            //Categoría entradas
             div.row.tm-gallery
                 div.tm-gallery-page(id="tm-gallery-page-pizza")
                     if productos.length > 0
                         each menuItem in productos
-                            article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
-                                figure
-                                    img.img-fluid.tm-gallery-img(src=menuItem.img, alt="img")
-                                    figcaption
-                                        h4.tm-gallery-title #{menuItem.title}
-                                        p.tm-gallery-description #{menuItem.description}
-                                        p.tm-gallery-price $ #{menuItem.price}
-                                        form(action="/cart" method="POST") 
-                                            button.productCardBtn(type="submit") Agregar al carrito
-                                            input(type="hidden" name="productId" value=menuItem.id)
+                            if menuItem.tag == 'Entrada'
+                                article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
+                                    figure
+                                        img.img-fluid.tm-gallery-img(src=menuItem.img, alt="img")
+                                        figcaption
+                                            h4.tm-gallery-title #{menuItem.title}
+                                            p.tm-gallery-description #{menuItem.description}
+                                            p.tm-gallery-price $ #{menuItem.price}
+                                            form(action="/cart" method="POST") 
+                                                button.productCardBtn(type="submit") Agregar al carrito
+                                                input(type="hidden" name="productId" value=menuItem.id)
                     else 
                         h4 No hay productos disponibles
-                                
+            //Categoría plato principal            
             div
                 div.tm-gallery-page.hidden(id="tm-gallery-page-salad")
+                    if productos.length > 0
+                        each menuItem in productos
+                            if menuItem.tag == 'Principal'
+                                article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
+                                    figure
+                                        img.img-fluid.tm-gallery-img(src=menuItem.img, alt="img")
+                                        figcaption
+                                            h4.tm-gallery-title #{menuItem.title}
+                                            p.tm-gallery-description #{menuItem.description}
+                                            p.tm-gallery-price $ #{menuItem.price}
+                                            form(action="/cart" method="POST") 
+                                                button.productCardBtn(type="submit") Agregar al carrito
+                                                input(type="hidden" name="productId" value=menuItem.id)
+                    else 
+                        h4 No hay productos disponibles
+            //Categoría postres
             div
                 div.tm-gallery-page.hidden(id="tm-gallery-page-noodle")
+                    if productos.length > 0
+                        each menuItem in productos
+                            if menuItem.tag == 'Postre'
+                                article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
+                                    figure
+                                        img.img-fluid.tm-gallery-img(src=menuItem.img, alt="img")
+                                        figcaption
+                                            h4.tm-gallery-title #{menuItem.title}
+                                            p.tm-gallery-description #{menuItem.description}
+                                            p.tm-gallery-price $ #{menuItem.price}
+                                            form(action="/cart" method="POST") 
+                                                button.productCardBtn(type="submit") Agregar al carrito
+                                                input(type="hidden" name="productId" value=menuItem.id)
+                    else 
+                        h4 No hay productos disponibles
 
             div
                 div.tm-section.tm-container-inner
