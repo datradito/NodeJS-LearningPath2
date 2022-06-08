@@ -37,6 +37,15 @@ module.exports = class Product {
             }
         })
     };
+    delete(id) {
+        fs.readFile(pathJSON, (err, fileContent) => {
+            let menuItems = []
+            const updatedMenuItems = menuItems.filter(i => i.id !== id);//Guardo todos menos el que coincide
+            fs.writeFile(pathJSON, JSON.stringify(updatedMenuItems), (err) =>{
+                console.log(err);
+            });
+        })
+    }
     static fetchAll() {
         return menuItems;
     }

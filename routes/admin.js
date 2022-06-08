@@ -12,4 +12,6 @@ router.get('/modify-products', productsController.modifyProducts);
 router.get('/edit-product/:platilloId', productsController.editProduct);// the : indicates that it shouldn't look for a given route because platilloId may vary
 router.post('/edit-product/', productsController.postEditProduct);
 
+router.post('/delete-product/', productsController.postDeleteProduct);
+
 module.exports = router;

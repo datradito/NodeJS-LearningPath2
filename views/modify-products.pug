@@ -17,6 +17,7 @@ block content
                                 p.tm-gallery-price $ #{menuItem.price}
                                 a.tm-gallery-price(href='/admin/edit-product/'+ menuItem.id + '?edit=true') Editar
                                 form(action="/admin/delete-product" method="POST") 
+                                    input(type="hidden", name="productId", value=menuItem.id)
                                     button.productCardBtn(type="submit") Eliminar
             else 
                 h4 No hay productos disponibles
