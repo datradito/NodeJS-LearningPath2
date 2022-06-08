@@ -6,11 +6,29 @@ const express = require('express');
 
 //const adminData =  require('./admin.js');
 
-const productsController  = require('../controllers/products');
+const shopController  = require('../controllers/shop');
 
 const router =  express.Router();
 
-router.get('/',productsController.getProducts);
+router.get('/',shopController.getIndex);
+
+router.get('/products', shopController.getProducts);
+
+
+router.get('/cart',shopController.getCart);
+
+
+router.get('/orders',shopController.getOrders);
+
+
+router.get('/checkout',shopController.getCheckout );
+
+
+
+module.exports  = router;
+
+
+
 
 /* router.get('/',(req, res, next) => {
     console.log('shop.js', adminData.products);
@@ -18,5 +36,3 @@ router.get('/',productsController.getProducts);
     //res.sendFile(path.join(__dirname,'..', 'views', 'shop.html'));
     res.render('shop', {prods:products, docTitle:'Shop'});
 }) */
-
-module.exports  = router;

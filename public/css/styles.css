@@ -66,7 +66,7 @@ main{
     font: inherit;
     border-radius: 3px;
 }
-button{
+ button .btn{
     font: inherit;
     border: 1px solid rgb(80, 134, 87);
     background-color: #ffff;
@@ -74,10 +74,11 @@ button{
     cursor: pointer;
     color: rgb(80, 134, 87);
     font-weight: bolder;
+    text-decoration: none;
 }
 
-button:hover,
-button:active{
+button .btn:hover,
+button .btn:active{
     background-color: rgb(80, 134, 87);
     color: #fff
 }
