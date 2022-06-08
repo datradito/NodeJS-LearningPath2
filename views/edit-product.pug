@@ -1,0 +1,44 @@
+extends layouts/mainLayout.pug
+block styles
+    link(href="/css/form.css", rel="stylesheet")
+
+block pageTitle
+    title Editar un producto
+block content
+        h1 Editar el producto # #{platilloEncontrado.id}
+        section
+            form.formPage(action="/admin/edit-product", method="POST", name="newProduct")
+                div.inputCtn
+                    label(for="title") Nombre: 
+                    input(type="text", value=platilloEncontrado.title, name="title")
+                div.inputCtn
+                    label(for="description") Descripción: 
+                    textarea(type="text", placeholder=platilloEncontrado.description, value=platilloEncontrado.description, name="description", rows="10")
+                div.inputCtn
+                    label(for="price") Precio:
+                    input(type="number", value=platilloEncontrado.price, name="price")
+                div.inputCtn
+                    label(for="img") Foto: 
+                    img(src=platilloEncontrado.img)
+                    input(type="text", value=platilloEncontrado.img, name="img")
+                div.inputCtn                  
+                    label(for="tag") Clasificación:
+                    select(name="tag")
+                        if platilloEncontrado.tag == 'Entrada'
+                            option(value="Entrada", selected) Entrada
+                        else 
+                            option(value="Entrada") Entrada
+                        
+                        if platilloEncontrado.tag == 'Principal'
+                            option(value="Principal", selected) Principal
+                        else 
+                            option(value="Principal") Principal
+                        
+                        if platilloEncontrado.tag == 'Postre'
+                            option(value="Postre", selected) Postre
+                        else 
+                            option(value="Postre") Postre
+                
+                input(type="hidden", value=platilloEncontrado.id, name="input_platilloId")
+
+                button.productCardBtn(type="submit") Editar producto

@@ -1,0 +1,18 @@
+extends layouts/mainLayout.pug
+block styles
+    link(href="/css/form.css", rel="stylesheet")
+
+block pageTitle
+    title Iniciar sesión
+
+block content
+    h1 Iniciar sesión
+    section
+        form.formPage(action="", method="POST", name="registeredUser")
+            input(type="text", placeholder="Nombre", name="nameUser")
+            input(type="text", placeholder="Apellido", name="lastNameUser")
+            input(type="text", placeholder="Mail", name="emailUser")
+            input(type="text", placeholder="New Password", name="passUser")
+
+            button.productCardBtn(type="submit") Iniciar sesión
+        a(href="/register") o registrarse
