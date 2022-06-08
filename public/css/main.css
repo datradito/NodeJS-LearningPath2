@@ -1,5 +1,14 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 
+/* sacar flechas del input number:*/
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+
+input[type=number] { -moz-appearance:textfield; }
+
 * {
   box-sizing: border-box;
 }
