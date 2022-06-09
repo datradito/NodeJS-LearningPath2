@@ -211,6 +211,10 @@ form {
 
 
 .centered {
-
   text-align: center;
+}
+
+.image-detail {
+  width: 100px;
+  height: 100px;
 }
