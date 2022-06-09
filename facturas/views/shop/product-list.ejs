@@ -6,7 +6,7 @@
         <%- include('../includes/navigation.ejs') %>
 
             <main>
-                <% if (prods.length > 0) { %>
+                <% if (prods.length> 0) { %>
                     <div class="grid">
                         <% for (let product of prods) { %>
                             <article class="card product-item">
@@ -19,10 +19,14 @@
                                     <img src="<%= product.imageUrl %>" alt="<%= product.direccion %>">
                                 </div>
                                 <div class="card__content">
-                                    <h2 class="product__price">a pagar: $
+                                    <h2 class="product__price">A pagar: $
                                         <%= product.price %>
                                     </h2>
-                                    <h4 class="product__description">Esta factura vence el dia: <%= product.fechadevencimiento %>
+                                    <h4 class="product__description">Esta factura vence el dia: <%=
+                                            product.fechadevencimiento %>
+                                    </h4>
+                                    <h4 class="product__description">
+                                        <%= product.empresa %>
                                     </h4>
 
                                     <p class="product__description">
@@ -30,10 +34,10 @@
                                     </p>
                                 </div>
                                 <div class="card__actions">
-                                <a href = "/products/<%= product.id %>"class="btn">Detalle</a>
-                                <form action="/add-to-cart" method="POST">
-                                    <button class="btn" type="submit">Elegir factura</button>
-                                </form>
+                                    <a href="/products/<%= product.id %>" class="btn">Detalle</a>
+                                    <form action="/add-to-cart" method="POST">
+                                        <button class="btn" type="submit">Elegir factura</button>
+                                    </form>
                                 </div>
                             </article>
                             <% } %>
