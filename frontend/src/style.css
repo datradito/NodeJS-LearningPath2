@@ -1,0 +1,241 @@
+#root {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Fugaz One', cursive;
+}
+header .hdr{
+  display: flex;
+  justify-content: space-between;
+
+}
+.bg-l{
+  background-color: #007bff;
+  padding: 0px;
+  border-radius: 0 300px 0 300px;
+
+}
+.bg-r{
+  background-color: #007bff;
+  border-radius: 300px 0 300px 0;
+}
+.liked{
+  color: #007bff;
+
+}
+.liked :hover {
+  color: red
+}
+
+header img {
+  max-width: 30%;
+  max-height: 32%;
+  margin:0 0 0 0;
+}
+Form h3{
+  text-align: center;
+}
+Form .button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.navbar {
+    font-family: 'Fugaz One', cursive;
+}
+.flechas{
+  display: flex;
+  justify-content: space-between;
+}
+.logo{
+  display: flex;
+  margin-left: 37vw;
+}
+.imagen {
+  justify-content: center;
+  padding: 10px;
+}
+.tarjeta {
+  margin: 11vw;
+}
+.formulario {
+  padding: 0 0 0 0;
+  display: flex;
+  justify-content: space-evenly;
+}
+.titulo-card {
+  width: 36vw;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 300px 0 300px 0;
+}
+
+.titulo-card-l {
+  width: 36vw;
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 0 300px 0 300px;
+}
+.nav {
+  width: 5vw;
+}
+.logo-user {
+  font-size: 5vw;
+}
+.image-l{
+  display: flex;
+  align-items: center;
+  width: 75vw;
+  height: 15vw;
+  margin: 0px;
+  padding: 1px;
+  border-radius: 0 300px 0 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+.image-r {
+  display: flex;
+  align-items: center;
+  width: 75vw;
+  height: 15vw;
+  margin: 0px;
+  padding: 1px;
+  border-radius: 300px 0 300px 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.cities {
+  margin: 10px;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+}
+.fa-arrow-circle-left{
+  text-decoration: none;
+  font-size: 5vw
+}
+.backcities {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+}
+.not-found{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 75vw;
+  height: 15vw;
+  margin: 0px;
+  padding: 1px;
+  border-radius: 0 300px 0 300px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+}
+
+.itinerary-l{
+  display: flex;
+  width: 75vw;
+  margin: 0px;
+  padding: 1px;
+  border-radius: 0 300px 0 230px;
+
+}
+.itinerary-r{
+  display: flex;
+  width: 75vw;
+  margin: 10px;
+  padding: 1px;
+  border-radius: 300px 0 300px 0;
+
+}
+.itinerary{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activities-l{
+  display: flex;
+  align-items: flex-start;
+  width: 73vw;
+  height: 20vw;
+  margin: 0px;
+  padding: 1px;
+  border-radius: 0 300px 0 300px;
+  background-position: center;
+  background-size: cover;
+
+}
+.activities-r{
+  display: flex;
+  align-items: flex-end;
+  width: 73vw;
+  height: 20vw;
+  margin: 0px;
+  padding: 1px;
+  border-radius: 300px 0 300px 0;
+  background-position: bottom;
+  background-size: cover;
+
+}
+
+.activites-img-r{
+  border-radius: 300px 0 300px 0;
+  height: 40vh;
+  overflow-y: scroll;
+}
+.activites-img-l{
+  border-radius: 0 300px 0 300px;
+  height: 40vh;
+  overflow-y: scroll;
+}
+
+.titulo-act{
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0,0,0,0.5);
+  border-radius: 10px 10px 10px 10px;
+}
+.input{
+  width: 30vw;
+}
+.form{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 2vw 0 0 0;
+  width: 84vw;
+  background-color: #007bff;
+  border-radius: 300px 0 300px 0;
+}
+
+.alert-l { 
+  text-align: center;
+  color: white;
+  background-color: #007bff;
+  border-radius: 300px 0 300px 0;
+}
+.alert-r { 
+  text-align: center;
+  margin: vw 0 0 0;
+  color: white;
+  background-color: #007bff;
+  border-radius: 0 300px 0 300px;
+}
+.navlink{
+  text-decoration: none;
+  padding: 0 3vw;
+  color: white;
+  background-color: #007bff;
+  border-radius: 0 300px 0 300px;
+}
