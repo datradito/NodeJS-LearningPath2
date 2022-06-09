@@ -11,14 +11,15 @@ block content
                 each i in cartProducts
                     article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
                         figure
-                            img.img-fluid.tm-gallery-img(src=i.itemData.img, alt="img")
+                            img.img-fluid.tm-gallery-img(src=i.img, alt="img")
                             figcaption
-                                h4.tm-gallery-title #{i.itemData.title}
-                                p.tm-gallery-description #{i.itemData.description}
-                                p.tm-gallery-price $ #{i.itemData.price}
+                                h4.tm-gallery-title #{i.title}
+                                p.tm-gallery-description #{i.description}
+                                p.tm-gallery-price $ #{i.price}
+                                p.tm-gallery-price Cantidad: #{i.cartItem.quantity}
                                 form(action="/delete-fromCart" method="POST") 
                                     button.productCardBtn(type="submit") Eliminar del carrito
-                                    input(type="hidden" name="productId" value=i.itemData.id)
+                                    input(type="hidden" name="productId" value=i.id)
                 
         a(href="/comprar") Terminar la compra
     else

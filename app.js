@@ -57,7 +57,10 @@ sequelize.sync()//dentro de sync puede ir  {force: true} para eliminar todas las
         return user;
     })
     .then( user => {
-        console.log(user)
+        console.log(user);
+        return user.createCart();
+    })
+    .then( cart => {
         app.listen(3000);
     })
     .catch( error => {
