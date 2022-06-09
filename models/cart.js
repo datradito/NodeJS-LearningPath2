@@ -5,11 +5,10 @@ const p = path.join(
     path.dirname(process.mainModule.filename),
     'data',
     'cart.json'
-  );
+  
+);
 
-
-
-  module.exports = class Cart {
+module.exports = class Cart {
 
     static addProduct(id, productPrice) {
 
@@ -24,9 +23,9 @@ const p = path.join(
 
         // Analyze the cart => Find existing product
 
-        const existingProductIndex = cart.products.findIndex(
-          prod => prod.id === id
-        );
+        const existingProductIndex = cart.products.findIndex(prod => prod.id === id); 
+
+        console.log(existingProductIndex);
 
         const existingProduct = cart.products[existingProductIndex];
         let updatedProduct;
@@ -58,7 +57,7 @@ const p = path.join(
         });
 
       });
-      
+
     }
 
   };
