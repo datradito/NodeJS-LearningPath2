@@ -22,4 +22,11 @@ exports.getIndex = (req, res, next) => {
     });
   })
   .catch(err => console.log(err));
-}
+};
+
+exports.getCart = (req, res, next) => {
+  res.render('shop/cart', {
+    pageTitle: 'Carrito de compras',
+    path: '/cart'
+  });
+};
