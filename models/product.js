@@ -5,30 +5,30 @@ const Cart = require('./cart');
 
 const Product = sequelize.define('product', {
     id: {
-        type: Sequalize.INTEGER,
+        type: Sequelize.INTEGER,
         alowNull: false,
         unique: true,
         autoIncrement: true,
         primaryKey: true
     },
     title: {
-        type: Sequalize.STRING,
+        type: Sequelize.STRING,
         alowNull: false
     },
     description: {
-        type: Sequalize.STRING ,
+        type: Sequelize.STRING ,
         alowNull: false
     },
     price: {
-        type: Sequalize.DOUBLE ,
+        type: Sequelize.DOUBLE ,
         alowNull: false
     },
     img: {
-        type: Sequalize.STRING ,
+        type: Sequelize.STRING ,
         alowNull: false
     },
     tag: {
-        type: Sequalize.STRING ,
+        type: Sequelize.STRING ,
         alowNull: false
     }
 });

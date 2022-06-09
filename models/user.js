@@ -5,25 +5,25 @@ const Cart = require('./cart');
 
 const User = sequelize.define('user', {
     id: {
-        type: Sequalize.INTEGER,
+        type: Sequelize.INTEGER,
         alowNull: false,
         unique: true,
         autoIncrement: true,
         primaryKey: true
     },
     name: {
-        type: Sequalize.TEXT,
+        type: Sequelize.TEXT,
         alowNull: false,
         isAlpha: true, //only letters
         notEmpty: true
     },
     email: {
-        type: Sequalize.STRING ,
+        type: Sequelize.STRING ,
         unique: true,
         alowNull: false
     },
     password: {
-        type: Sequalize.STRING ,
+        type: Sequelize.STRING ,
         alowNull: false
     }
 });

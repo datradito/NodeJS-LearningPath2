@@ -56,7 +56,7 @@ exports.postDeleteFromCart = (req, res, next) => {
     const productId = req.body.productId;
     res.user.getCart()
         .then(cart => {
-            return cart.getProducts({where: {id = productId}})
+            return cart.getProducts({where: { id: productId }})
         })
         .then(products => {
             const product = products[0];

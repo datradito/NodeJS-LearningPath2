@@ -3,11 +3,11 @@ const sequelize = require('../util/database');
 
 const Cart = sequelize.define('cart', {
     id: {
-        type: Sequalize.INTEGER,
+        type: Sequelize.INTEGER,
         alowNull: false,
         unique: true,
         autoIncrement: true,
         primaryKey: true
     }
 });
-module.exports = Product
+module.exports = Cart

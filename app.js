@@ -14,6 +14,7 @@ const sequelize = require('./util/database');
 const Cart = require('./models/cart');
 const User = require('./models/user');
 const CartItem = require('./models/cart-items');
+const Product = require('./models/product');
 
 app.set('view engine', 'pug');
 app.set('views', 'views');
@@ -41,7 +42,7 @@ User.hasOne(Cart);
 Cart.belongsToMany(Product, {through: CartItem});
 Product.belongsToMany(Cart, {through: CartItem});
 
-sequelize.sync()//dentro de sync puede ir  {force: true} para eliminar todas las tablas y volverlas a crear
+sequelize.sync()//dentro de sync puede ir {force: true}  para eliminar todas las tablas y volverlas a crear
     .then( results => {
         //console.log(results);
         return User.findById(1);
