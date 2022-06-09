@@ -10,7 +10,13 @@ const shopRoutes = require('./routes/shop');
 const errorsController = require('./controllers/errors');
 
 const db = require('./util/database');
-db.execute('SELECT * FROM products').then().catch();
+db.execute('SELECT * FROM products')
+    .then(result => {
+        console.log(result);
+    })
+    .catch(err => {
+        console.log(err);
+    });//Execute in case of error
 
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));

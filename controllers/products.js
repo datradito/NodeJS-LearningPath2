@@ -1,7 +1,6 @@
 const Product = require('../models/product');
-const menu = Product.fetchAll();
+
 exports.getAddProduct = (req, res, next) => {
-    const menuItems = Product.fetchAll();
     res.render('add-product');
 };
 
@@ -14,15 +13,26 @@ exports.postAddProduct = (req, res, next) => {
         req.body.tag,
         null
     );
-    platillo.save();
-    res.render('add-product');
+    platillo.save()
+        .then(() => {
+            res.redirect('add-product');
+        })
+        .catch(err => console.log(err)); 
 };
 
 exports.allProducts = (req, res, next) => {
-    res.render('index', {productos: menu});
+    Product.fetchAll()
+        .then(([rows, fieldData]) => {
+            res.render('index', {productos: rows});
+        })
+        .catch(err => console.log(err)); 
 }
 exports.modifyProducts = (req, res, next) => {
-    res.render('modify-products', {productos: menu});
+    Product.fetchAll()
+        .then(([rows, fieldData]) => {
+            res.render('modify-products', {productos: rows});
+        })
+        .catch(err => console.log(err)); 
 }
 exports.editProduct = (req, res, next) => {
     const isEditEnabled = req.query.edit;
@@ -30,11 +40,14 @@ exports.editProduct = (req, res, next) => {
         return res.redirect('/');
     }
     const platilloId = req.params.platilloId;//Extraigo el Id desde la url de edit-product    
-    const platilloEncontrado = Product.findById(platilloId);
-    res.render('edit-product', {
-        platilloEncontrado: platilloEncontrado,
-        editing: isEditEnabled
-    });
+    Product.findById(platilloId)
+        .then(([platilloEncontrado]) => {
+            res.render('modify-products', {
+                platilloEncontrado: platilloEncontrado[0],//Paso index 0 porque se espera un array
+                editing: isEditEnabled
+            });
+        })
+        .catch(err => console.log(err));
 }
 exports.postEditProduct = (req, res, next) => {
     const platilloId = req.body.input_platilloId;
@@ -45,8 +58,11 @@ exports.postEditProduct = (req, res, next) => {
     const updatedImage = req.body.img;
     const updatedTag = req.body.tag;
     const updatedPlatillo = new Product(updatedTitle, updatedDescription, updatedPrice, updatedImage, updatedTag, platilloId);
-    updatedPlatillo.save();
-    res.redirect('/');
+    updatedPlatillo.save()
+        .then(() => {
+            res.redirect('/');
+        })
+        .catch(err => console.log(err));
 }
 exports.postDeleteProduct = (req, res, next) => {
     const platilloId = req.body.productId;

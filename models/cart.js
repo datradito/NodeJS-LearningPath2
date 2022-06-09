@@ -1,6 +1,4 @@
-const fs = require('fs');
-const pathJSON = './data/cart.json';
-//Cart JSON clean version should be {"products":[],"totalPrice":0}
+const db = require('../util/database');
 
 module.exports = class Cart {    
     static addProduct(id, productPrice){
@@ -44,8 +42,6 @@ module.exports = class Cart {
         });
     };
     static fetchCart() {
-        const cartJson = fs.readFileSync(pathJSON);
-        const cartItems = JSON.parse(cartJson);
-        return cartItems;
+        return db.execute('SELECT * FROM cart WHERE');
     }
 }
