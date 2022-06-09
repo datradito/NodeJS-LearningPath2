@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 
+// Agregar producto
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/add-product', {
     pageTitle: 'Add Product',
@@ -10,6 +11,7 @@ exports.getAddProduct = (req, res, next) => {
   });
 };
 
+// viene del formulario, carga producto
 exports.postAddProduct = (req, res, next) => {
   const title = req.body.title;
   const imageUrl = req.body.imageUrl;

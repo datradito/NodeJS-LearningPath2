@@ -1,5 +1,6 @@
 const Product = require('../models/product');
 
+// Lista de productos
 exports.getProducts = (req, res, next) => {
   Product.fetchAll(products => {
     res.render('shop/products-list', {
@@ -10,6 +11,7 @@ exports.getProducts = (req, res, next) => {
   });
 };
 
+// Producto individual
 exports.getProduct =(req, res, next) => {
   const proId = req.params.productId;
   console.log(proId);
