@@ -13,6 +13,13 @@ router.get('/products', adminController.getProducts);
 //admin/add-product => post
 router.post('/add-product', adminController.postAddProduct);
 
+//admin/edit-product => get por id
+router.get('/edit-product/:productId', adminController.getEditProduct)
+
+
+
+router.get('/edit-product', adminController.postEditProduct)
+
 
 /* exports.routes = router;
 exports.products =  products; */
