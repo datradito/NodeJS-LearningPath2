@@ -14,21 +14,19 @@ exports.postCart = (req, res, next) => {
     res.redirect('/');
 };
 exports.getCart = (req, res, next) => {
-    const cartItems = Cart.fetchCart();
-    Product.fetchAll()
-        .then(([rows, fieldData]) => {
-            const menuItems = rows; 
-            const cartProducts = [];
-            for (item of menuItems) {
-                const cartProductData = cartItems.products.find(i => i.id === item.id);
-                if(cartProductData){
-                    cartProducts.push({itemData: item, quantity: cartProductData.quantity});
-                }
+    req.user.getCart()
+    .then(cart => {
+        /*const menuItems = rows; 
+        const cartProducts = [];
+        for (item of menuItems) {
+            const cartProductData = cartItems.products.find(i => i.id === item.id);
+            if(cartProductData){
+                cartProducts.push({itemData: item, quantity: cartProductData.quantity});
             }
-            res.render('cart',{ cartProducts: cartProducts });
-        })
-        .catch(err => console.log(err)); 
-
+        }*/
+        res.render('cart',{ cartProducts: cartProducts });
+    })
+    .catch(err => console.log(err))
 };
 
 exports.postDeleteFromCart = (req, res, next) => {

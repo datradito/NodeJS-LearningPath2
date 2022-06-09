@@ -5,32 +5,34 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-    const platillo = new Product(
-        req.body.title,
-        req.body.description, 
-        req.body.price, 
-        req.body.img, 
-        req.body.tag,
-        null
-    );
-    platillo.save()
-        .then(() => {
-            res.redirect('add-product');
-        })
-        .catch(err => console.log(err)); 
+    req.user.createProduct();
+    Product.create({
+        title: req.body.title,
+        description: req.body.description,
+        price: req.body.price, 
+        img: req.body.img,
+        tag: req.body.tag
+    })
+    .then(result => {
+        //console.log(result);
+        res.redirect('/admin/modify-products');
+    })
+    .catch(error => {
+        console.log(error);
+    });
 };
 
 exports.allProducts = (req, res, next) => {
-    Product.fetchAll()
-        .then(([rows, fieldData]) => {
-            res.render('index', {productos: rows});
+    Product.findAll()
+        .then(menuItems => {
+            res.render('index', {productos: menuItems});
         })
         .catch(err => console.log(err)); 
 }
 exports.modifyProducts = (req, res, next) => {
-    Product.fetchAll()
-        .then(([rows, fieldData]) => {
-            res.render('modify-products', {productos: rows});
+    Product.findAll()
+        .then(menuItems => {
+            res.render('modify-products', {productos: menuItems});
         })
         .catch(err => console.log(err)); 
 }
@@ -40,14 +42,15 @@ exports.editProduct = (req, res, next) => {
         return res.redirect('/');
     }
     const platilloId = req.params.platilloId;//Extraigo el Id desde la url de edit-product    
+    
     Product.findById(platilloId)
-        .then(([platilloEncontrado]) => {
+        .then( platilloEncontrado => {
             res.render('modify-products', {
-                platilloEncontrado: platilloEncontrado[0],//Paso index 0 porque se espera un array
+                platilloEncontrado: platilloEncontrado,
                 editing: isEditEnabled
             });
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err)); 
 }
 exports.postEditProduct = (req, res, next) => {
     const platilloId = req.body.input_platilloId;
@@ -57,15 +60,28 @@ exports.postEditProduct = (req, res, next) => {
     const updatedPrice = req.body.price;
     const updatedImage = req.body.img;
     const updatedTag = req.body.tag;
-    const updatedPlatillo = new Product(updatedTitle, updatedDescription, updatedPrice, updatedImage, updatedTag, platilloId);
-    updatedPlatillo.save()
-        .then(() => {
+    Product.findById(platilloId)
+        .then(platillo => {
+            platillo.title = updatedTitle;
+            platillo.description = updatedDescription;
+            platillo.price = updatedPrice;
+            platillo.img = updatedImage;
+            platillo.tag = updatedTag;
+            return platillo.save();
+        })
+        .then( result => {
             res.redirect('/');
         })
-        .catch(err => console.log(err));
+        .catch(err => console.log(err))
 }
 exports.postDeleteProduct = (req, res, next) => {
     const platilloId = req.body.productId;
-    const deleteProductById = Product.delete(platilloId);
-    res.redirect('/admin/modify-products');
+    Product.findById(platilloId)
+        .then(platillo => {
+            return platillo.destroy();
+        })
+        .then( result => {
+            res.redirect('/admin/modify-products');
+        })
+        .catch(err => console.log(err))
 }
