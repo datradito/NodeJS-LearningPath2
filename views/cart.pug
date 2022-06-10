@@ -20,8 +20,9 @@ block content
                                 form(action="/delete-fromCart" method="POST") 
                                     button.productCardBtn(type="submit") Eliminar del carrito
                                     input(type="hidden" name="productId" value=i.id)
-                
-        a(href="/comprar") Terminar la compra
+        form(action="/comprar" method="POST") 
+            button.productCardBtn(type="submit") Terminar la compra
+
     else
         section 
             h3 El carrito está vacío

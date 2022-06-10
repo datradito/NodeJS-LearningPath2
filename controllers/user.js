@@ -39,7 +39,7 @@ exports.postCart = (req, res, next) => {
         .catch(err => console.log(err))
     ;
 };
-exports.getCart = (req, res, next) => {
+exports.fetchCart = (req, res, next) => {
     req.user.getCart()
         .then(cart => {
             return cart.getProducts() //cart is associated to products through sequelize
@@ -54,9 +54,13 @@ exports.getCart = (req, res, next) => {
 
 exports.postDeleteFromCart = (req, res, next) => {
     const productId = req.body.productId;
-    res.user.getCart()
+    
+    req.user
+    .getCart()
         .then(cart => {
-            return cart.getProducts({where: { id: productId }})
+            console.log(req.user);
+
+            return cart.getProducts({ where: { id: productId } })
         })
         .then(products => {
             const product = products[0];
@@ -69,6 +73,41 @@ exports.postDeleteFromCart = (req, res, next) => {
     ;
 };
 
-exports.getCheckout = (req, res, next) => {
-    res.render('comprar');
+exports.postComprar = (req, res, next) => {
+    let fetchedCart;
+    req.user.getCart()
+        .then( cart => {
+            fetchedCart = cart;
+            return cart.getProducts()
+        })
+        .then( products => {
+            console.log(products);
+            return req.user.createOrder()
+                .then( order => {
+                    return order.addProducts(products.map(product => {
+                        product.orderItem = { quantity: product.cartItem.quantity };
+                        return product
+                    }))
+                })
+                .catch(err => console.log(err))
+            ;
+        })
+        .then( result => {
+            return fetchedCart.setProducts(null)
+        })
+        .then( result => {
+            res.redirect('/cart');
+        })
+        .catch(err => console.log(err))
+    ;
+};
+
+exports.getOrders = (req, res, next) => {
+    req.user.getOrders( {include: ['products']})
+        .then( result => {
+            console.log(result[0]);
+            res.render('orders', {orders: result});
+        })
+        .catch(err => console.log(err))
+    ;
 };

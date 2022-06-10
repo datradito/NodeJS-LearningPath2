@@ -1,6 +1,6 @@
 [
     {
-        "id": "1435",
+        "id": "1",
         "img": "https://i.ibb.co/nsNzY6p/01.jpg",
         "title": "Ensalada proteica",
         "description": "Tomate, lechuga, rábanos, palta, zapallo, garbanzos, atún, morrón, repollo y brotes de soja con salsa césar.",
@@ -8,7 +8,7 @@
         "tag": "Entrada"
     },
     {
-        "id": "3462",
+        "id": "2",
         "img": "https://i.ibb.co/RCVMKJv/02.jpg",
         "price": "680",
         "description": "Pizza de morrón, queso gruyere y cebolla caramelizada",
@@ -16,7 +16,7 @@
         "title": "Pizza de morrón"
     },
     {
-        "id": "6535",
+        "id": "3",
         "img": "https://i.ibb.co/CbF5Bzr/07.jpg",
         "title": "Ensalada frutal",
         "description": "sandía, arándanos, ricotta, lechuga, higos, kale, mango y nueces pecan con aceite de oliva y pimienta jamaiquina.",
@@ -24,7 +24,7 @@
         "tag": "Entrada"
     },
     {
-        "id": "26747",
+        "id": "4",
         "img": "https://i.ibb.co/9tK7xKL/08.jpg",
         "title": "Gyozas veganas",
         "description": "Empanadillas japonesas cocidas al vapor y rellenas de zanahoria, morrón, cebolla, sésamo, soja y salsa japonesa.",
@@ -32,7 +32,7 @@
         "tag": "Entrada"
     },
     {
-        "id": "43",
+        "id": "5",
         "img": "https://i.ibb.co/RyxYcSg/06.jpg",
         "title": "Tostadas francesas",
         "description": "Tostadas francesas con arándanos, banana, maple syrup y canela.",

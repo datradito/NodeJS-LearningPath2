@@ -6,10 +6,10 @@ const userController = require('../controllers/user');
 
 const router = express.Router();
 
-router.get('/comprar', userController.getCheckout);
+router.post('/comprar', userController.postComprar);
 
 router.post('/cart', userController.postCart);
-router.get('/cart', userController.getCart);
+router.get('/cart', userController.fetchCart);
 
 router.post('/delete-fromCart', userController.postDeleteFromCart);
 

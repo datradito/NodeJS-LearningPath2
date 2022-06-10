@@ -13,7 +13,7 @@ block content
                     input(type="text", value=platilloEncontrado.title, name="title")
                 div.inputCtn
                     label(for="description") Descripción: 
-                    textarea(type="text", placeholder=platilloEncontrado.description, value=platilloEncontrado.description, name="description", rows="10")
+                    textarea(type="text", placeholder=platilloEncontrado.description, name="description", rows="10") #{platilloEncontrado.description}
                 div.inputCtn
                     label(for="price") Precio:
                     input(type="number", value=platilloEncontrado.price, name="price")

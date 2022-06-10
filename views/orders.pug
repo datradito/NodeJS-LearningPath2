@@ -1,0 +1,24 @@
+extends layouts/mainLayout.pug
+block styles
+    link(href="/css/form.css", rel="stylesheet")
+
+block pageTitle
+    title Pedidos
+block content
+        h1 Pedidos
+        section
+            if orders.length > 0
+                each pedido of orders
+                    article 
+                        h3 # #{pedido.id}
+                        each productoPedido of pedido.products
+                            p #{productoPedido.title}
+                            p Cantidad: #{productoPedido.quantity}
+                        //p Dinero abonado: #{productoPedido.title}
+                    
+                    button.productCardBtn(type="submit") Pedido Preparado: 
+                    button.productCardBtn(type="submit") Pedido Entregado: 
+                    button.productCardBtn(type="submit") Puede borrar el pedido:
+    
+            else
+                h3 No hay pedidos

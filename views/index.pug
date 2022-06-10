@@ -14,14 +14,14 @@ block content
                 nav
                     ul
                         li.tm-paging-item
-                            a.tm-paging-link.active(href="#") Entrada
+                            button.tm-paging-link.active(id="entradasCategory") Entrada
                         li.tm-paging-item
-                            a.tm-paging-link(href="#", id="postresCategory") Principal
+                            button.tm-paging-link( id="principalCategory") Principal
                         li.tm-paging-item 
-                            a.tm-paging-link(href="#") Postre
-            //Categoría entradas
+                            button.tm-paging-link( id="postresCategory") Postre
             div.row.tm-gallery
-                div.tm-gallery-page(id="tm-gallery-page-pizza")
+                //Categoría entradas
+                div.tm-gallery-page(id="tm-gallery-page-entradas")
                     if productos.length > 0
                         each menuItem in productos
                             if menuItem.tag == 'Entrada'
@@ -37,9 +37,8 @@ block content
                                                 input(type="hidden" name="productId" value=menuItem.id)
                     else 
                         h4 No hay productos disponibles
-            //Categoría plato principal            
-            div
-                div.tm-gallery-page.hidden(id="tm-gallery-page-salad")
+                //Categoría plato principal            
+                div.tm-gallery-page.hidden(id="tm-gallery-page-principales")
                     if productos.length > 0
                         each menuItem in productos
                             if menuItem.tag == 'Principal'
@@ -55,9 +54,8 @@ block content
                                                 input(type="hidden" name="productId" value=menuItem.id)
                     else 
                         h4 No hay productos disponibles
-            //Categoría postres
-            div
-                div.tm-gallery-page.hidden(id="tm-gallery-page-noodle")
+                //Categoría postres
+                div.tm-gallery-page.hidden(id="tm-gallery-page-postres")
                     if productos.length > 0
                         each menuItem in productos
                             if menuItem.tag == 'Postre'
@@ -86,3 +84,5 @@ block content
                                 h4.tm-gallery-title Visitanos
                                 p.tm-mb-45 Restochico es un restaurante clasico e inclusivo. Ofrecemos opciones veganas, vegetarianas y omnavoras, nuestros platos principales son nutritivos y saciadores. En Restochico creemos que la base de una buena comida se encuentra en la calidad de los ingredientes que la componen. Por eso, nuestros proveedores nos ofrecen productos frescos que son sanitizados y cocinados con suma atención.
                                 a(href="/Contacto").tm-btn.tm-btn-default.tm-right Encontranos
+            script
+                include index.js 

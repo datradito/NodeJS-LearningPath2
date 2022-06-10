@@ -69,7 +69,7 @@ exports.postEditProduct = (req, res, next) => {
             return platillo.save();
         })
         .then( result => {
-            res.redirect('/');
+            res.redirect('/admin/modify-products');
         })
         .catch(err => console.log(err))
 }
