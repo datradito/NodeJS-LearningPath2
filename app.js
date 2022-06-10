@@ -22,7 +22,7 @@ app.use(bodyparser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use((req, res, next) => {
-    User.findById(1)
+    User.findByPk(1)
     .then(user => {
         req.user = user; //user was undefined before this statement
         next();
@@ -45,7 +45,7 @@ Product.belongsToMany(Cart, {through: CartItem});
 sequelize.sync()//dentro de sync puede ir {force: true}  para eliminar todas las tablas y volverlas a crear
     .then( results => {
         //console.log(results);
-        return User.findById(1);
+        return User.findByPk(1);
     })
     .then( user => {
         if(!user){

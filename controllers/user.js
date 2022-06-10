@@ -26,7 +26,7 @@ exports.postCart = (req, res, next) => {
                 newQuantity = oldQuantity + 1;
                 return fetchedCart.addProduct(platillo, { through: {quantity: newQuantity} })
             }
-            return Product.findById(platilloId)
+            return Product.findByPk(platilloId)
                 .then(platillo => {
                     return fetchedCart.addProduct(platillo, { through: {quantity: newQuantity} })
                 })
@@ -44,7 +44,7 @@ exports.getCart = (req, res, next) => {
         .then(cart => {
             return cart.getProducts() //cart is associated to products through sequelize
             .then(cartProducts => {
-                res.render('cart',{ cartProducts: cartProducts })
+                res.render('cart', { cartProducts: cartProducts })
             })
             .catch(err => console.log(err));
         })

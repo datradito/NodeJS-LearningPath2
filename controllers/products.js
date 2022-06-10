@@ -5,7 +5,6 @@ exports.getAddProduct = (req, res, next) => {
 };
 
 exports.postAddProduct = (req, res, next) => {
-    req.user.createProduct();
     Product.create({
         title: req.body.title,
         description: req.body.description,
@@ -43,9 +42,9 @@ exports.editProduct = (req, res, next) => {
     }
     const platilloId = req.params.platilloId;//Extraigo el Id desde la url de edit-product    
     
-    Product.findById(platilloId)
+    Product.findByPk(platilloId)
         .then( platilloEncontrado => {
-            res.render('modify-products', {
+            res.render('edit-product', {
                 platilloEncontrado: platilloEncontrado,
                 editing: isEditEnabled
             });
@@ -60,7 +59,7 @@ exports.postEditProduct = (req, res, next) => {
     const updatedPrice = req.body.price;
     const updatedImage = req.body.img;
     const updatedTag = req.body.tag;
-    Product.findById(platilloId)
+    Product.findByPk(platilloId)
         .then(platillo => {
             platillo.title = updatedTitle;
             platillo.description = updatedDescription;
@@ -76,7 +75,7 @@ exports.postEditProduct = (req, res, next) => {
 }
 exports.postDeleteProduct = (req, res, next) => {
     const platilloId = req.body.productId;
-    Product.findById(platilloId)
+    Product.findByPk(platilloId)
         .then(platillo => {
             return platillo.destroy();
         })
