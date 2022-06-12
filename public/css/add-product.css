@@ -3,12 +3,16 @@
 }
 
 form {
-    text-align: center;
+    padding-top: 20px;
+    width: 90%;
+    margin: 10px auto 0 auto;
 }
 
+/* cada div del formulario */
 .form-control{
     display: center;
-    display: inline-block;
+    display: block;
+    margin-top: 10px;
 }
 
 input{
@@ -17,8 +21,7 @@ input{
 
 button{
     font-size: 15px;
-    margin-left: 40px;
-    margin: top 20px;
+    margin: 20px 40px auto auto;
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;

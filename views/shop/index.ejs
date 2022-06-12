@@ -1,34 +1,36 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="/css/shop.css">
-    <link rel="stylesheet" href="/css/add-product.css">
-</head>
-<body>
-    <%- include('../includes/navigation.ejs') %>
+    <link rel="stylesheet" href="shop.css">
+    <link rel="stylesheet" href="add-product">
+    </head>
 
-    <main>
-        <% if (prods.length > 0) { %>
-            <div class="grid">
-                <% for (let product of prods) { %>
-                    <article class="card product-item">
-                        <header class="card__header">
-                            <h1 class="product__title"><%= product.title %></h1>
-                        </header>
-                        <div class="card__image">
-                            <img src=""/>
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+            <main>
+                <div class="b-form text-center">
+                    <div class="b-form-title">
+                        <h3 class="form_title">Registrate</h3>
+
+                        <p class="b-subtext">o usa tu cuenta de email para registrarte</p>
+                    </div>
+                    <form method="post" action="">
+                        <div class="form-group username">
+                            <input class="form-control" type="text" name="" placeholder="Name">
+                            <i class="fas fa-user b-font"></i>
                         </div>
-                        <div class="card__content">
-                            <h2 class="product__price">$19.99</h2>
-                            <p class="product__description"></p>
+                        <div class="form-group">
+                            <input class="form-control" type="email" name="" placeholder="Email">
+                            <i class="fas fa-envelope b-font"></i>
                         </div>
-                        <div class="card__actions">
-                            <button class="btn">editar</button>
-                            <button class="btn">borrar</button>
+                        <div class="form-group">
+                            <input class="form-control" type="password" name="" placeholder="Password">
+                            <i class="fas fa-unlock-alt b-font"></i>
                         </div>
-                    </article>
-                <% } %>
-            </div>
-        <% } else { %>
-            <h1>Nada encontrado</h1>
-        <% } %>
+                        <div class="form-group">
+                            <span class="b-forgot">Recuperar contraseña</span>
+                        </div>
+                        <button type="button" class="sign_up">Registrarse</button>
+                    </form>
+                </div>
     </main>
 <%- include('../includes/end.ejs') %>

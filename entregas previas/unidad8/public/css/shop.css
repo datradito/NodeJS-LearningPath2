@@ -1,0 +1,36 @@
+h2{
+  color: #333;
+  font-weight: 800;
+}
+
+.card {
+  padding: 15px;
+  width: 30%;
+  border-radius: 20px;
+  border: 0px solid rgb(101, 100, 100);
+  border-style: groove;
+  margin: 20px auto 20px auto;
+  background-color: #f1f1f1;
+  text-align: center;
+  box-shadow: 10px 10px rgba(214, 212, 212, 0.8);
+}
+
+.card__header{
+  text-align: center;
+}
+
+.imagen {
+  width: 350px;
+  margin: 0 auto 0 auto;
+}
+
+.card__actions{
+  text-decoration: none;
+  cursor: pointer;
+  text-align: center;
+  width: 95%;
+}
+
+.btn{
+  margin-top: 15px;
+}

@@ -4,18 +4,23 @@
     --letras: #ffffff;
     --h1: #333;
     --fondo-nav: #333;
+    --fondo-suave: #efefef;
+    --altopantalla : calc(height);
+    padding: 0;
+    margin: 0;
     font-family: 'Lato', sans-serif;
     background-color: transparent;
 }
 
 body {
-    padding: 0;
-    background-color: rgb(248, 248, 248);
+    background-color: var(--fondo-suave);
 }
 
 main {
-    margin: 0 auto 0 auto;
+    background-color: #ffffff;
+    margin: 0 auto;
     width: 60%;
+    height: calc(100vh - 90px);
 }
 
 .main-header {
@@ -26,9 +31,9 @@ main {
 }
 
 nav ul{
-    margin-top: 10px;
     background-color: var(--fondo-nav);
     width: 90%;
+    padding-top: 10px;
 }
 
 nav ul li{
@@ -39,6 +44,7 @@ nav ul li{
 }
 
 nav ul li a{
+    text-decoration: none;
     color: var(--letras);
     margin-left: 40px;
     font-size: 20px;
@@ -47,8 +53,19 @@ nav ul li a{
 h1 {
     color: var(--h1);
     height: 40px;
+    text-align: center;
+    padding-top: 10px;
 }
 
 h2 {
     color: rgb(249, 247, 247);
 }
+
+footer {
+    background-color: #333;
+    color: var(--letras);
+    min-height: 40px;
+    text-align:center;
+}
+
+
