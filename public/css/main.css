@@ -17,6 +17,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: 'Open Sans', sans-serif;
+  background-color: rgb(255, 236, 255);
 }
 
 main {
@@ -69,6 +70,7 @@ main {
 
 .card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.26);
+  background-color: white;
 }
 
 .card__header,

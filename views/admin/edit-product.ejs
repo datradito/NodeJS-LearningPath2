@@ -10,13 +10,13 @@
         <form class="product-form" action="/admin/<% if(editing) { %>edit-products<% } else { %>add-product<% } %>" method="POST">
             <div class="form-control">
                 <label for="title">Nombre</label>
-                <input type="text" name="title" id="title" value="<% if(editing) { %> <%= prods.title %> <% } %>">
+                <input type="text" name="title" id="title" value="<% if(editing) { %><%=prods.title %> <% } %>">
                 <label for="imageUrl">Foto</label>
-                <input type="text" name="imageUrl" id="imageUrl" value="<% if(editing) { %> <%= prods.imageUrl %> <% } %>">
+                <input type="text" name="imageUrl" id="imageUrl" value="<% if(editing) { %><%=prods.imageUrl %> <% } %>">
                 <label for="price">Precio</label>
-                <input type="number" name="price" id="price" step="0.01" value=<% if(editing) { %> <%=prods.price%> <% } %>>
+                <input type="number" name="price" id="price" step="0.01" value=<% if(editing) { %><%=prods.price%> <% } %>>
                 <label for="description">Descripción</label>
-                <textarea for="description" name="description" id="description" rows="5"><% if(editing) { %> <%= prods.description %> <% } %></textarea>
+                <textarea for="description" name="description" id="description" rows="5"><% if(editing) { %><%=prods.description %> <% } %></textarea>
             </div>
             <% if(editing) { %>
                 <input type="hidden" value="<%= prods.id %>" name="productId">
