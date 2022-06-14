@@ -11,7 +11,7 @@ app.use(express.json())
 
 app.use('/api', router)
 
-const host = process.env.HOST || 4000
-const port =process.env.PORT || '0.0.0.0'
+const host = process.env.HOST || '0.0.0.0'
+const port = process.env.PORT || 4000
 
-app.listen(port, host, ( ) => (console.log("App listeng en port 4000")))
+app.listen(port, host, ( ) => (console.log(`App listeng en port ${ port }` )))
