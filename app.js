@@ -7,6 +7,7 @@ const bodyparser = require('body-parser');
 const app = express();
 
 const adminRoutes = require('./routes/admin');
+const authRoutes = require('./routes/auth');
 const shopRoutes = require('./routes/shop');
 const errorsController = require('./controllers/errors');
 
@@ -36,8 +37,10 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes); //Añade /admin además de la ruta establecida
 app.use(shopRoutes);
+app.use(authRoutes);
 
 app.use(errorsController.get404);
+
 
 Cart.belongsTo(User);
 User.hasOne(Cart);

@@ -9,10 +9,17 @@ block content
         h1 Registrarse
         section
             form.formPage(action="", method="POST", name="newUser")
-                input(type="text", placeholder="Nombre", name="nameUser")
+                label(for="nameUser") Nombre
+                input(type="name", placeholder="Nombre", name="nameUser")
+                
+                label(for="lastNameUser") Apellido
                 input(type="text", placeholder="Apellido", name="lastNameUser")
-                input(type="text", placeholder="Mail", name="emailUser")
-                input(type="text", placeholder="New Password", name="passUser")
+                
+                label(for="emailUser") Mail
+                input(type="email", placeholder="Mail", name="emailUser")
+                
+                label(for="passUser") Nueva Contraseña
+                input(type="password", placeholder="Nueva contraseña", name="passUser")
 
                 button.productCardBtn(type="submit") Registrarse
             a(href="/log-in") o iniciar sesión
