@@ -2,10 +2,9 @@ const Product = require('../models/product');
 const Cart = require('../models/cart');
 
 exports.getRegister = (req, res, next) => {
-    res.render('register');
-};
-exports.getLogIn = (req, res, next) => {
-    res.render('log-in');
+    res.render('register'), {
+        isAuth: req.isLoggedIn
+    };
 };
 exports.postCart = (req, res, next) => {
     const platilloId = req.body.productId;
@@ -44,7 +43,9 @@ exports.fetchCart = (req, res, next) => {
         .then(cart => {
             return cart.getProducts() //cart is associated to products through sequelize
             .then(cartProducts => {
-                res.render('cart', { cartProducts: cartProducts })
+                res.render('cart', { cartProducts: cartProducts, 
+                    isAuth: req.isLoggedIn
+                })
             })
             .catch(err => console.log(err));
         })
@@ -106,7 +107,9 @@ exports.getOrders = (req, res, next) => {
     req.user.getOrders( {include: ['products']})
         .then( result => {
             console.log(result[0]);
-            res.render('orders', {orders: result});
+            res.render('orders', {orders: result,
+                isAuth: isLoggedIn
+            });
         })
         .catch(err => console.log(err))
     ;

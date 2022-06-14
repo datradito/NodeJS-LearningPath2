@@ -1,3 +1,5 @@
 exports.get404 = (req, res, next) => {
-    res.render('pageNotFound');
+    res.render('pageNotFound'), {
+        isAuth: req.isLoggedIn
+    };
 };

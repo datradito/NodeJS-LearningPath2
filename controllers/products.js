@@ -24,14 +24,18 @@ exports.postAddProduct = (req, res, next) => {
 exports.allProducts = (req, res, next) => {
     Product.findAll()
         .then(menuItems => {
-            res.render('index', {productos: menuItems});
+            res.render('index', {productos: menuItems,
+                isAuth: req.isLoggedIn
+        });
         })
         .catch(err => console.log(err)); 
 }
 exports.modifyProducts = (req, res, next) => {
     Product.findAll()
         .then(menuItems => {
-            res.render('modify-products', {productos: menuItems});
+            res.render('modify-products', {productos: menuItems,
+                isAuth: req.isLoggedIn
+        });
         })
         .catch(err => console.log(err)); 
 }
@@ -46,7 +50,8 @@ exports.editProduct = (req, res, next) => {
         .then( platilloEncontrado => {
             res.render('edit-product', {
                 platilloEncontrado: platilloEncontrado,
-                editing: isEditEnabled
+                editing: isEditEnabled,
+                isAuth: req.isLoggedIn
             });
         })
         .catch(err => console.log(err)); 

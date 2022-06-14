@@ -16,16 +16,20 @@ html(lang="es")
             ul
                 li 
                     a(href="/") Tienda
-                li 
-                    a(href="/admin/modify-products") Modificar productos
-                li 
-                    a(href="/log-in") Iniciar sesión
-                li 
-                    a(href="/cart") Carrito
-                li 
-                    a(href="/admin/add-product") Añadir producto
-                li 
-                    a(href="/admin/orders") orders
+                if (isAuth)
+                    li 
+                        a(href="/admin/modify-products") Modificar productos
+                    li 
+                        a(href="/cart") Carrito
+                    li 
+                        a(href="/admin/add-product") Añadir producto
+                    li 
+                        a(href="/admin/orders") orders
+                    //li 
+                        a(href="/log-out") Cerrar sesión
+                else
+                    li 
+                        a(href="/auth/log-in") Iniciar sesión
             block content
         footer.tm-footer.text-center
             p Copyright: 2020 Simple House | Design: 

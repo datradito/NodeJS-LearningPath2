@@ -15,8 +15,6 @@ router.post('/delete-fromCart', userController.postDeleteFromCart);
 
 router.get('/register', userController.getRegister);
 
-router.get('/log-in', userController.getLogIn);
-
 router.get('/', productsController.allProducts);
 
 module.exports = router;

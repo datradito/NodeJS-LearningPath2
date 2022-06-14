@@ -37,7 +37,7 @@ app.use((req, res, next) => {
 
 app.use('/admin', adminRoutes); //Añade /admin además de la ruta establecida
 app.use(shopRoutes);
-app.use(authRoutes);
+app.use('/auth', authRoutes);
 
 app.use(errorsController.get404);
 
