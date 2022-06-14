@@ -6,22 +6,22 @@
    <%- include('../includes/navigation.ejs') %>
 
    <main>
-       <% if (products.length > 0) { %>
+       <% if (product.length > 0) { %>
             <ul>
-                <% products.forEach( p => { %> 
+                <% product.forEach( p => { %> 
                     <li>
                         <article class="card product-item">
                             <header class="card__header">
-                                <h1 class="product__title"><%= product.title %></h1>
+                                <h1 class="product__title"><%= p.title %></h1>
                             </header>
                             <div class="card__image">
                                 <img src="<%= product.imageUrl %>"
                                     alt="<%= product.title %>">
                             </div>
                             <div class="card__content">
-                                <h2 class="product__price">$<%= product.price %></h2>
-                                <p class="product__description"><%= product.description %></p>
-                                <p>Cantidad: <% product.qty %></p>
+                                <h2 class="product__price">$<%= p.price %></h2>
+                                <p class="product__description"><%= p.description %></p>
+                                <p>Cantidad: <%= p.cartItem.qty %></p>
                                 <% if (edit == false) { %>
                                     <form action="/edit-qty/<%= product.id %>?edit=true" method="post">
                                         <input type="hidden" name="productId" value="<%= product.id %>">
@@ -30,16 +30,16 @@
                                 <% } %>
                                 
                                 <% if (edit == true) { %>
-                                    <form action="/edited-qty/<%= product.id %>" method="post">
-                                        <input type="hidden" name="productId" value="<%= product.id %>">
-                                        <input type="number" value=<%= product.qty %>>
-                                        <button class="btn" type="submit">Editar</button>
+                                    <form action="/edited-qty" method="post">
+                                        <input type="hidden" name="productId" value="<%= p.id %>">
+                                        <input type="number" value=<%= p.cartItem.qty %>>
+                                        <button class="btn" type="submit">Editar listo</button>
                                     </form>
                                 <% } %>
                             </div>
                             <div class="card__actions">
-                                <form action="/admin/delete-product" method="post">
-                                    <input type="hidden" name="productId" value="<%= product.id %>">
+                                <form action="/delete-cart-product" method="post">
+                                    <input type="hidden" name="productId" value="<%= p.id %>">
                                     <button class="btn" type="submit">Eliminar</button>
                                 </form>
                             </div>

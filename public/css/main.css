@@ -124,3 +124,7 @@ a {
   background-color: #7c65a7;
   color: white;
 }
+
+li {
+  list-style-type: none;
+}
