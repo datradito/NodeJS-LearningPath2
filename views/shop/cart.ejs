@@ -1,53 +1,66 @@
 <%- include('../includes/head.ejs') %>
     <link rel="stylesheet" href="/css/product.css">
-</head>
+    <link rel="stylesheet" href="/css/cart.css">
+    <link rel="stylesheet" href="/css/forms.css">
+    </head>
 
-<body>
-   <%- include('../includes/navigation.ejs') %>
+    <body>
+        <%- include('../includes/navigation.ejs') %>
 
-   <main>
-       <% if (product.length > 0) { %>
-            <ul>
-                <% product.forEach( p => { %> 
-                    <li>
-                        <article class="card product-item">
-                            <header class="card__header">
-                                <h1 class="product__title"><%= p.title %></h1>
-                            </header>
-                            <div class="card__image">
-                                <img src="<%= product.imageUrl %>"
-                                    alt="<%= product.title %>">
-                            </div>
-                            <div class="card__content">
-                                <h2 class="product__price">$<%= p.price %></h2>
-                                <p class="product__description"><%= p.description %></p>
-                                <p>Cantidad: <%= p.cartItem.qty %></p>
-                                <% if (edit == false) { %>
-                                    <form action="/edit-qty/<%= product.id %>?edit=true" method="post">
-                                        <input type="hidden" name="productId" value="<%= product.id %>">
-                                        <button class="btn" type="submit">Editar</button>
-                                    </form>
-                                <% } %>
-                                
-                                <% if (edit == true) { %>
-                                    <form action="/edited-qty" method="post">
-                                        <input type="hidden" name="productId" value="<%= p.id %>">
-                                        <input type="number" value=<%= p.cartItem.qty %>>
-                                        <button class="btn" type="submit">Editar listo</button>
-                                    </form>
-                                <% } %>
-                            </div>
-                            <div class="card__actions">
-                                <form action="/delete-cart-product" method="post">
-                                    <input type="hidden" name="productId" value="<%= p.id %>">
-                                    <button class="btn" type="submit">Eliminar</button>
-                                </form>
-                            </div>
-                        </article>
-                    </li>
-                <% }) %>
-            </ul>
-        <% } %>
-   </main>
+            <main>
+                <% if (product.length> 0) { %>
 
-   <%- include('../includes/end.ejs') %>
+                    <ul>
+                        <li>
+                            <article class="card col-head">
+                                <h3 class="col-1">Producto</h3>
+                                <h3 class="col-2">Descripción</h3>
+                                <h3 class="col-3">Cantidad</h3>
+                                <h3 class="col-1">Precio total</h3>
+                                <h3 class="col-2">Acciones</h3>
+                            </article>
+                        </li>
+                        <% product.forEach( p=> { %>
+
+                            <li>
+                                <article class="card product-item">
+                                        <h1 class="product__title">
+                                            <%= p.title %>
+                                        </h1>
+
+
+                                        <p class="product__description col-2">
+                                            <%= p.description %>
+                                        </p>
+                                        <% if (!edit) { %>
+                                        <p class="col-3">
+                                            <%= p.cartItem.qty %>
+                                        </p>
+                                        <% } %>
+                                        <% if (edit) { %>
+                                            <form action="/edit-qty" method="post" class="col-3 form-control">
+                                                <input type="hidden" name="productId" value="<%= p.id %>">
+                                                <input type="number" name="newQty" value="<%= p.cartItem.qty %>">
+                                                <button class="btn" type="submit">Guardar</button>
+                                            </form>
+                                            <% } %>
+                                        <h2 class="product__price">$<%= p.price * p.cartItem.qty %>
+                                        </h2>
+                                    <div class="card__actions">
+                                        <% if (!edit) { %>
+                                                <a href="/cart/<%= p.id %>?edit=true"><button class="btn"> Editar</button></a>
+                                            <% } %>
+                                            <a href="/product-detail/<%=p.id%>"><button class="btn">Detalles</button> </a>
+                                                        <form action="/delete-cart-product" method="post">
+                                                            <input type="hidden" name="productId" value="<%= p.id %>">
+                                                            <button class="btn" type="submit">Eliminar</button>
+                                                        </form>
+                                    </div>
+                                </article>
+                            </li>
+                            <% }) %>
+                    </ul>
+                    <% } %>
+            </main>
+
+            <%- include('../includes/end.ejs') %>

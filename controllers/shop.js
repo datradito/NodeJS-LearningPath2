@@ -25,6 +25,9 @@ exports.getIndex = (req, res, next) => {
 };
 
 exports.getCart = (req, res, next) => {
+  let editMode = req.query.edit;
+  if(editMode == null)
+  {editMode=false;}
   req.user
   .getCart()
   .then( cart => {
@@ -35,7 +38,7 @@ exports.getCart = (req, res, next) => {
         path: '/shop/cart',
         product: products,
         pageTitle: 'Tu carrito',
-        edit: false
+        edit: editMode
       });
     })
     .catch(err => console.log(err));
@@ -66,7 +69,6 @@ exports.postCart = (req,res, next) => {
     return Product.findByPk(productId);
   })
   .then( product => {
-    console.log(product);
     return fetchedCart.addProduct(product, { through: { qty : newQty}});
   })
   .then( ()=> {
@@ -103,5 +105,48 @@ exports.postDeleteCartItem = (req, res, next) => {
     console.log('Producto eliminado con éxito');
     res.redirect('/cart');
 })
+  .catch( err => console.log(err));
+}
+
+// exports.getEditCart = (req, res, next) => {
+//   const editMode = req.query.edit;
+//     if(!editMode){
+//         return res.redirect('/');
+//     }
+//     const prodId = req.params.productId;
+//   Product.findByPk(prodId)
+//   .then(product => {
+//     if(!product){
+//       return res.redirect('/');
+//   }
+//     res.render('shop/cart', {
+//       p: product,
+//       edit: editMode,
+//       pageTitle: 'Edición',
+//       path: '/cart'
+//     })
+//   })
+//   .catch( err => console.log(err));
+// }
+
+exports.postEditCart = (req, res, next) => {
+  const prodId = req.body.productId;
+  const newQty = req.body.newQty;
+  req.user
+  .getCart()
+  .then( cart => {
+    fetchedCart = cart;
+    return cart.getProducts( { where: { id: prodId}});
+  })
+  .then( products => {
+    const product = products[0];
+    return product;
+  })
+  .then( product => {
+    return fetchedCart.addProduct(product, { through: { qty : newQty}});
+  })
+  .then( result => {
+    res.redirect('/cart')
+  })
   .catch( err => console.log(err));
 }

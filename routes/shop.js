@@ -18,4 +18,8 @@ router.get('/product-detail/:productId', shopController.getProductDetail);
 
 router.post('/delete-cart-product', shopController.postDeleteCartItem);
 
+router.get('/cart/:productId', shopController.getCart);
+
+router.post('/edit-qty', shopController.postEditCart);
+
 module.exports = router;
