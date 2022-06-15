@@ -1,0 +1,13 @@
+{
+  "author": "Begona Munoz",
+  "licence": "ISC",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "echo \"Error: no test\" && exit 1 ",
+    "start": "node app.js",
+    "start-server": "node app.js"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.16"
+  }
+}

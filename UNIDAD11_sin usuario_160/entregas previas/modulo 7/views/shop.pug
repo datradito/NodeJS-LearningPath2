@@ -1,0 +1,25 @@
+extends layouts/main-layout.pug 
+block styles
+    link(rel="stylesheet", href="shop.css")
+
+block content
+    main 
+    if prods.length > 0
+        .grid
+            each product in prods
+                article.card.product-item
+                    header.card__header 
+                        h2.product__title #{product.title}
+                    div.car__image 
+                        img(src="https://cdn.pixabay.com/photo/2017/08/22/16/23/cat-2669554_960_720.png", class="imagen" alt="gato")
+                    .card__content 
+                        h3.price__text  $00.00
+                        p.product__description Lorem ipsum dolor sit amet, consectetur adipiscing elit...
+                    .card__actions 
+                        a(href="/pordefinir") Averiguar mas 
+             
+    else 
+        h1 No hay productos
+            
+
+
