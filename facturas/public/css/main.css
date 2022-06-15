@@ -26,6 +26,8 @@ main {
   height: 3.5rem;
   background-color: #debb32;
   padding: 0 1.5rem;
+  display: flex;
+  align-items: center;
 }
 
 .main-header__nav {
@@ -95,7 +97,7 @@ main {
 
 .card__actions button,
 .card__actions a {
-    margin: 0 0.25rem;
+    margin: 0 0.25rem 0 0.25rem;
 }
 
 .btn {
@@ -112,4 +114,12 @@ main {
   background-color: #0c1d7f;
   color: white;
   
+}
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  background-color: #ffeb3b;
 }

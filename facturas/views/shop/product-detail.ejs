@@ -3,7 +3,7 @@
 
 <body>
     <%- include('../includes/navigation.ejs') %>
-    <main class="centered">
+ <main class="centered">
     <h1><%= product.direccion %></h1>
     </hr>
     <div>
@@ -13,8 +13,7 @@
     <h2>Importe: $ <%= product.price %></h2>
     <h2>Vence el dia: <%= product.fechadevencimiento %></h2>
     <h2>Detalle: <%= product.description %></h2>
+    <%-include('../includes/add-to-cart.ejs') %>
     
-
-
-</main>
+ </main>
 <%- include('../includes/end.ejs') %>
