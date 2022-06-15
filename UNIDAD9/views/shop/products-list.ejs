@@ -1,0 +1,48 @@
+<%- include('../includes/head.ejs') %>
+<link rel="stylesheet" href="/css/shop.css">
+    </head>
+
+    <body  class="">
+        <%- include('../includes/navigation.ejs') %>
+
+            <main  class="transparente">
+                <h1>lista de animales en adopción</h1>
+
+                <% if (prods.length> 0) { %>
+                    <div class="grid">
+                        <% for (let product of prods) { %>
+                            <article class="card product-item">
+                                <header class="card__header">
+                                    <h1 class="product__title">
+                                        <%= product.title %>
+                                    </h1>
+                                </header>
+                                <div class="card__content">
+                                    </h3>
+                                    <h2 class="product__price">$ <%= product.price %>
+                                    </h2>
+                                </div>
+                                <div class="card__image">
+                                    <img class="imagen" src="<%= product.imageUrl %>" alt="<%= product.title %>">
+                                </div>
+                                <div class="card__actions">
+                                    <a class="detalles" href="/shop/product-details/<%= product.id %>">Ver detalles</a>
+                                </div>
+                                <form class="action__button" action="/admin/delete-product" method="POST">
+                                    <input type="hidden" value="<%= product.id %>" name="productId">
+                                    <button class="btn" type="submit">Delete</button>
+                                </form>                           
+                                <form action="/cart" method="post">
+                                    <input type="hidden" value="<%- product.id %>" name="productId" id="productId"/>
+                                    <button class="btn" type="submit"> Añadir al carrito  </button>
+                                </form>
+                                
+                            </article>
+                            <% } %>
+                    </div>
+                    <% } else { %>
+                        <h1>no lo encuentra!!</h1>
+                        <% } %>
+            </main>
+            
+            <%- include('../includes/end.ejs') %>
