@@ -60,7 +60,13 @@
                             </li>
                             <% }) %>
                     </ul>
-                    <% } %>
-            </main>
+                    <form action="/create-order" method="POST">
+                        <button type="submit" class="btn">Comprar ahora!</button>
+                    </form>
+                    <% } else { %>
+                        <h1>No hay productos en el carrito</h1>
+                        <a href="./product-list" class="btn">Agrega Productos!</a>
+                        <% } %>
+                    </main>
 
             <%- include('../includes/end.ejs') %>

@@ -22,4 +22,8 @@ router.get('/cart/:productId', shopController.getCart);
 
 router.post('/edit-qty', shopController.postEditCart);
 
+router.get('/order', shopController.getOrder);
+
+router.post('/create-order', shopController.postOrder);
+
 module.exports = router;
