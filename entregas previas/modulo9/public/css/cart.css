@@ -1,0 +1,10 @@
+ul li{
+  text-decoration: none;
+  display: block;
+  margin-left: 15px;
+  padding-top: 15px;
+}
+
+.btn{
+  background-color: aquamarine;
+}

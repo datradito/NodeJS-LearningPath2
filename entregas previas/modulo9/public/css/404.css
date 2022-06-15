@@ -1,0 +1,15 @@
+body {
+    background-image: url("https://st1.uvnimg.com/dims4/default/cda1954/2147483647/thumbnail/1240x698/quality/75/?url=https%3A%2F%2Fuvn-brightspot.s3.amazonaws.com%2Fassets%2Fvixes%2Fbtg%2Fcuriosidades.batanga.com%2Ffiles%2FBiologia-Animal-el-ojo-de-los-gatos-1.jpg");
+    background-repeat: no-repeat;
+}
+main{
+background-color: transparent;
+}
+
+h1, h2 {
+    margin-top: 25px;
+    color: #333;
+    margin: 0 auto 0 auto;
+    text-align: center;
+}
+
