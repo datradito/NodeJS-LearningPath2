@@ -1,0 +1,48 @@
+.card{
+    display: flex;
+    width: 95%;
+}
+
+.card__content {
+    display: flex;
+
+}
+
+.col-head> h3 {
+    text-align: center; 
+}
+
+.col-1 {
+    width: 15vw;
+}
+
+.col-2 {
+    width: 30vw;
+}
+
+.col-3 {
+    width: 7vw;
+}
+
+.product__title{
+    width: 15vw;
+}
+
+.card__actions {
+    width: 28vw;
+}
+
+.product__description {
+    padding-left: 1%;
+    margin-left: 0;
+}
+
+.product__price {
+    margin: 1rem 0;
+    padding: 0;
+    width: 8vw;
+}
+
+input {
+    width: 5vw;
+}

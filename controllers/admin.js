@@ -13,7 +13,8 @@ exports.postAddProduct = (req, res, next) => {
     const imageUrl = req.body.imageUrl;
     const price = req.body.price;
     const description = req.body.description;
-    Product.create({
+    req.user
+    .createProduct({
         title: title,
         price: price,
         imageUrl: imageUrl,
@@ -82,9 +83,10 @@ exports.postEditProduct = (req, res, next) => {
 }
 
 exports.postDeleteProduct = (req, res, next) => {
-    const prodId = req.body.ProductId;
+    const prodId = req.body.productId;
+    console.log(req.body);
     Product.findByPk(prodId)
-        .then( product => console.log(product))
+    .then( product => product.destroy())
         .then( result => {
             console.log('Producto eliminado con éxito');
             res.redirect('/admin/products');
