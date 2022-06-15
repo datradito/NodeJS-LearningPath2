@@ -1,36 +1,22 @@
 <%- include('../includes/head.ejs') %>
-    <link rel="stylesheet" href="shop.css">
-    <link rel="stylesheet" href="add-product">
+    <link rel="stylesheet" href="/css/shop.css">
     </head>
 
-    <body>
+    <body class="imagenbackground">
         <%- include('../includes/navigation.ejs') %>
 
-            <main>
-                <div class="b-form text-center">
-                    <div class="b-form-title">
-                        <h3 class="form_title">Registrate</h3>
+            <main class="transparente">
+                <h1>ADOPCION RESPONSABLE</h1>
+                
 
-                        <p class="b-subtext">o usa tu cuenta de email para registrarte</p>
-                    </div>
-                    <form method="post" action="">
-                        <div class="form-group username">
-                            <input class="form-control" type="text" name="" placeholder="Name">
-                            <i class="fas fa-user b-font"></i>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="email" name="" placeholder="Email">
-                            <i class="fas fa-envelope b-font"></i>
-                        </div>
-                        <div class="form-group">
-                            <input class="form-control" type="password" name="" placeholder="Password">
-                            <i class="fas fa-unlock-alt b-font"></i>
-                        </div>
-                        <div class="form-group">
-                            <span class="b-forgot">Recuperar contraseña</span>
-                        </div>
-                        <button type="button" class="sign_up">Registrarse</button>
-                    </form>
-                </div>
-    </main>
-<%- include('../includes/end.ejs') %>
+                <form class="ingreso">
+                    <input type="text" placeholder="username" />
+                    <input type="password" placeholder="password" />
+                    <button class="btn-login">login</button>
+                    <p class="message">Not registered? <a class="crear-cuenta" href="/registro">crear cuenta</a></p>
+                <h3><a class="enlace-primera-pagina" href="/products">animales en adopción</h3></a>
+                
+                </form>
+                </main>
+
+            <%- include('../includes/end.ejs') %>

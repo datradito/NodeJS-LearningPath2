@@ -18,29 +18,36 @@ exports.getEditProduct = (req, res, next) => {
   if (!editMode) {
     return res.redirect('/');
   }
-  const prodId = req.params.productId;
-  Product.findById(prodId, product => {
-    if (!product) {
-      return res.redirect('/');
-    }
-    res.render('admin/edit-product', {
-      pageTitle: 'Edit Product',
-      path: '/admin/edit-product',
-      editing: editMode,
-      product: product
-    });
-  });
+  const prodId = req.query.productId;
+  Product.findById(prodId)
+    .then(([rows, fieldData]) => {
+      console.log(rows[0]);
+      res.render('admin/edit-product', {
+        pageTitle: 'Edit Product',
+        product: rows[0],
+        pageTitle: rows[0].nombre,
+        editing: editMode,
+        path: '/admin/edit-product'
+      });
+    })
+    .catch(err => console.log(err));
 };
 
 // funcion que carga en json el producto que viene de 
 // add-product
 exports.postAddProduct = (req, res, next) => {
-  const title = req.body.title;
-  const imageUrl = req.body.imageUrl;
-  const price = req.body.price;
-  const description = req.body.description;
-  const product = new Product(null, title, imageUrl, description, price);
-  product.save();
+  const nombre = req.body.nombre;
+  const imagen = req.body.imagen;
+  const precio = req.body.precio;
+  const descripcion = req.body.descripcion;
+  const edad = req.body.edad;
+  const product = new Product(null, nombre, edad, descripcion, imagen, precio);
+  product
+  .save()
+  .then(()=>{
+    res.redirect('/');
+  })
+  .catch(err=> console.log(err));
   res.redirect('/');
 };
 
@@ -49,30 +56,14 @@ exports.getProducts = (req, res, next) => {
     res.render('admin/products', {
       prods: products,
       pageTitle: 'Admin Products',
-      path: '/admin/products'
+      path: '/products'
     });
   });
 };
 
-exports.postEditProduct = (req, res, next) => {
-  const prodId = req.body.productId;
-  const updatedTitle = req.body.title;
-  const updatedPrice = req.body.price;
-  const updatedImageUrl = req.body.imageUrl;
-  const updatedDesc = req.body.description;
-  const updatedProduct = new Product(
-    prodId,
-    updatedTitle,
-    updatedImageUrl,
-    updatedDesc,
-    updatedPrice
-  );
-  updatedProduct.save();
-  res.redirect('/admin/products');
-};
 
 exports.postDeleteProduct = (req, res, next) => {
   const prodId = req.body.productId;
   Product.deleteById(prodId);
-  res.redirect('/admin/products');
+  res.redirect('/products');
 };

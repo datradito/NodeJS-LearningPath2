@@ -2,21 +2,24 @@
 <link rel="stylesheet" href="/css/shop.css">
     </head>
 
-    <body>
+    <body class="imagenbackground">
         <%- include('../includes/navigation.ejs') %>
-        <main class="centered">
-            <h1><%- product.title %></h1>
+        <main class="centered transparente">
+            <h1>Detalles de: <%- product.nombre %></h1>
             <hr>
             <div>
                 <img scr="<%- product.imageUrl %>"  alt="<%- product.title %>">
             </div>
-            <h2><%- product.price %></h2>
-            <p><%- product.description %></p>
-            <form action="/cart" method="post">
+            <img class="imagen-detalle" src="<%- product.imagen %>" alt="<%- product.nombre %>"/>
+            <h2>Precio: <%- product.precio %></h2>
+            <p>Edad: <%- product.edad %></p>
+            <p>Descripcion: <%- product.descripcion %></p>
+            <form action="/shop/delete/<%- product.id %>" method="post">
                 <input type="hidden" value="<%- product.id %>" name="productId" id="productId"/>
-                <button class="btn" type="submit"> Añadir al carrito  </button>
+                <button class="btn" type="submit">Borrar elemento</button>
             </form>
-          
+            <a href="http://"></a>
+                 
         </main>
         
 <%- include('../includes/end.ejs') %>

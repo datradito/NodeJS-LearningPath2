@@ -1,15 +1,19 @@
-const fs = require('fs');
-const path = require('path');
+const db = require('../util/database');
+
+
+//const fs = require('fs');
+//const path = require('path');
 
 const Cart = require('./cart');
 
+/* deprecated unidad 9
 const p = path.join(
   path.dirname(process.mainModule.filename),
   'data',
-  'products.json'
-);
+  'products.json'77
+);*/
 
-const getProductsFromFile = cb => {
+/*/const getProductsFromFile = cb => {
   fs.readFile(p, (err, fileContent) => {
     if (err) {
       cb([]);
@@ -17,64 +21,46 @@ const getProductsFromFile = cb => {
       cb(JSON.parse(fileContent));
     }
   });
-};
+};*/
 
 module.exports = class Product {
-  constructor(id, title, imageUrl, description, price) {
+  constructor(id, nombre, edad, descripcion, imagen, precio) {
     this.id = id;
-    this.title = title;
-    this.imageUrl = imageUrl;
-    this.description = description;
-    this.price = price;
+    this.nombre = nombre;
+    this.descripcion = descripcion;
+    this.edad = edad;
+    this.precio = precio;
+    this.imagen = imagen;
   }
 
   save() {
-    getProductsFromFile(products => {
-      if (this.id) {
-        const existingProductIndex = products.findIndex(
-          prod => prod.id === this.id
-        );
-        const updatedProducts = [...products];
-        updatedProducts[existingProductIndex] = this;
-        fs.writeFile(p, JSON.stringify(updatedProducts), err => {
-          console.log(err);
-        });
-      } else {
-        console.log(products);
-        this.id = Math.random().toString();
-        products.push(this);
-        fs.writeFile(p, JSON.stringify(products), err => {
-          console.log(err);
-        });
-      }
-    });
+    return db.execute(
+      'INSERT INTO gatos (nombre, edad, descripcion, imagen, precio) VALUES(?,?,?,?,?)',
+      [ this.nombre, this.edad,  this.descripcion,this.imagen,this.precio]
+    );
   }
-
-
 
   static fetchAll(cb) {
-    getProductsFromFile(cb);
+    return db.execute('SELECT * FROM gatos');
+    /*getProductsFromFile(cb);*/
+  };
+
+  static findById(id, cd) {
+    return db.execute('SELECT * FROM gatos WHERE id = ' + id + ';');
   }
-
-
-  static findById(id, cb) {
-    getProductsFromFile(products => {
-      const product = products.find(p => p.id === id);
-      cb(product);
-    });
-  }
-
 
   static deleteById(id) {
-    getProductsFromFile(products => {
-      const product = products.find(prod => prod.id === id);
-      const updatedProducts = products.filter(prod => prod.id !== id);
-      fs.writeFile(p, JSON.stringify(updatedProducts), err => {
-        if (!err) {
-          Cart.deleteProduct(id, product.price);
-        };
-      });
-    });
+    return db.execute('DELETE FROM gatos WHERE id = ' + id + ';');
+  }
+
+  static updateById(updatedProduct) {
+    var id = updatedProduct.id;
+    var nombre = updatedProduct.nombre;
+    var precio = updatedProduct.precio;
+    var imagen = updatedProduct.imagen;
+    var edad = updatedProduct.edad;
+    var descripcion = updatedProduct.descripcion;
+    return db.execute('UPDATE gatos SET nombre = "' + nombre + '", imagen = "' + imagen + '", precio = "'+precio + '", edad = "'+edad + '", descripcion = "' + descripcion + '" WHERE id = ' + id + ';');
   }
 
 }

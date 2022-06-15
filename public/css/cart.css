@@ -6,5 +6,9 @@ ul li{
 }
 
 .btn{
-  background-color: aquamarine;
-}
+  margin-top: 15px;
+  border:0px;
+  background-color: blueviolet;
+  color: antiquewhite;
+  padding: 15px;}
+
