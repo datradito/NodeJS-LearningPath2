@@ -9,17 +9,24 @@
                 <ul class="cart__item-list">
                     <% products.forEach(p => { %>
                         <li class="cart__item">
-                            <h1><%= p.productData.title %></h1>
-                            <h2>Quantity: <%= p.qty %></h2>
+                            <h1><%= p.direccion %></h1>
+                            <h2>Quantity: <%= p.cartItem.quantity %></h2>
                             <form action="/cart-delete-item" method="POST">
-                                <input type="hidden" value="<%= p.productData.id %>" name="productId">
-                                <button class="btn danger" type="submit">borrar</button>
+                                <input type="hidden" value="<%= p.id %>" name="productId">
+                                <button class="btn danger" type="submit">Borrar</button>
                             </form>
                         </li>
                     <% }) %>
                 </ul>
+                <hr>
+                <div class="centered">
+                    <form action="/create-order" method="POST">
+                        <button type="submit" class="btn">  <p>Pagar ahora!</p>!</button>
+                    </form>
+                </div>
+                
             <% } else { %>
-                <h1>No hay facturas en la carta!</h1>
+                <h1>No Products in Cart!</h1>
             <% } %>
         </main>
         <%- include('../includes/end.ejs') %>

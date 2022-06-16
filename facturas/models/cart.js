@@ -1,4 +1,34 @@
-const fs = require('fs');
+const Sequelize = require('sequelize');
+
+const sequelize = require('../util/database');
+
+const Cart = sequelize.define('cart', {
+  id: {
+    type: Sequelize.INTEGER,
+    autoIncrement: true,
+    allowNull: false,
+    primaryKey: true
+  }
+});
+
+module.exports = Cart;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*const fs = require('fs');
 const path = require('path');
 
 const p = path.join(
@@ -16,7 +46,7 @@ module.exports = class Cart {
         cart = JSON.parse(fileContent);
       }
       // Analyze the cart => FindPk existing product
-      const existingProductIndex = cart.products.FindPkIndex(
+      const existingProductIndex = cart.products.PkIndex(
         prod => prod.id === id
       );
       const existingProduct = cart.products[existingProductIndex];
@@ -44,7 +74,7 @@ module.exports = class Cart {
         return;
       }
       const updatedCart = { ...JSON.parse(fileContent) };
-      const product = updatedCart.products.FindPk(prod => prod.id === id);
+      const product = updatedCart.products.FindByPk(prod => prod.id === id);
       if (!product) {
           return;
       }
@@ -71,4 +101,4 @@ module.exports = class Cart {
       }
     });
   }
-};
+};*/
