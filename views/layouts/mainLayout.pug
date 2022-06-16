@@ -16,7 +16,7 @@ html(lang="es")
             ul
                 li 
                     a(href="/") Tienda
-                if (isAuth)
+                if isLoggedIn
                     li 
                         a(href="/admin/modify-products") Modificar productos
                     li 

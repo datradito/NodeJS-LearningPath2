@@ -3,7 +3,7 @@ const Cart = require('../models/cart');
 
 exports.getRegister = (req, res, next) => {
     res.render('register'), {
-        isAuth: req.isLoggedIn
+        isLoggedIn: req.session.isLoggedIn
     };
 };
 exports.postCart = (req, res, next) => {
@@ -44,7 +44,7 @@ exports.fetchCart = (req, res, next) => {
             return cart.getProducts() //cart is associated to products through sequelize
             .then(cartProducts => {
                 res.render('cart', { cartProducts: cartProducts, 
-                    isAuth: req.isLoggedIn
+                    isLoggedIn: req.session.isLoggedIn
                 })
             })
             .catch(err => console.log(err));
@@ -108,7 +108,7 @@ exports.getOrders = (req, res, next) => {
         .then( result => {
             console.log(result[0]);
             res.render('orders', {orders: result,
-                isAuth: isLoggedIn
+                isLoggedIn: req.session.isLoggedIn
             });
         })
         .catch(err => console.log(err))

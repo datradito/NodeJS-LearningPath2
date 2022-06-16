@@ -3,6 +3,7 @@ console.log('pagina actualizada');
 const path = require('path');
 const express = require('express');
 const bodyparser = require('body-parser');
+const session = require('express-session');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.set('view engine', 'pug');
 app.set('views', 'views');
 app.use(bodyparser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
+app.use(session({secret: 'mi secreto', resave: false, saveUninitialized: false}));
 
 app.use((req, res, next) => {
     User.findByPk(1)

@@ -1,7 +1,9 @@
 const Product = require('../models/product');
 
 exports.getAddProduct = (req, res, next) => {
-    res.render('add-product');
+    res.render('add-product', {
+        isLoggedIn: req.session.isLoggedIn
+    });
 };
 
 exports.postAddProduct = (req, res, next) => {
@@ -25,7 +27,7 @@ exports.allProducts = (req, res, next) => {
     Product.findAll()
         .then(menuItems => {
             res.render('index', {productos: menuItems,
-                isAuth: req.isLoggedIn
+                isLoggedIn: req.session.isLoggedIn
         });
         })
         .catch(err => console.log(err)); 
@@ -34,7 +36,7 @@ exports.modifyProducts = (req, res, next) => {
     Product.findAll()
         .then(menuItems => {
             res.render('modify-products', {productos: menuItems,
-                isAuth: req.isLoggedIn
+                isLoggedIn: req.session.isLoggedIn
         });
         })
         .catch(err => console.log(err)); 
@@ -51,7 +53,7 @@ exports.editProduct = (req, res, next) => {
             res.render('edit-product', {
                 platilloEncontrado: platilloEncontrado,
                 editing: isEditEnabled,
-                isAuth: req.isLoggedIn
+                isLoggedIn: req.session.isLoggedIn
             });
         })
         .catch(err => console.log(err)); 
