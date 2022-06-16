@@ -13,7 +13,7 @@ block content
                         h3 # #{pedido.id}
                         each productoPedido of pedido.products
                             p #{productoPedido.title}
-                            p Cantidad: #{productoPedido.quantity}
+                            p Cantidad: #{productoPedido.orderItem.quantity}
                         //p Dinero abonado: #{productoPedido.title}
                     
                     //p Estado del pedido: #{}

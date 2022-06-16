@@ -106,7 +106,6 @@ exports.postComprar = (req, res, next) => {
 exports.getOrders = (req, res, next) => {
     req.user.getOrders( {include: ['products']})
         .then( result => {
-            console.log(result[0]);
             res.render('orders', {orders: result,
                 isLoggedIn: req.session.isLoggedIn
             });
