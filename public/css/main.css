@@ -169,6 +169,28 @@ form {
   width: 70%;
 }
 
+.card__image_404 img{
+  width: 40%;
+  height: 40%;
+  display: inline;
+  float: right;
+  margin-right: 25rem;
+}
+
+.card__image_cart img{
+  width: 40%;
+  height: 40%;
+  display: inline;
+  float: right;
+  margin-right: 25rem;
+}
+
+.card__title_404{
+  text-align: center;
+  color: #06283D;
+}
+
+
 .card__actions {
   padding: 1rem;
   text-align: center;
