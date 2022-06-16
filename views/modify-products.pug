@@ -1,0 +1,26 @@
+extends layouts/mainLayout.pug
+block styles
+    link(href="/css/form.css", rel="stylesheet")
+
+block pageTitle
+    title Modificar productos
+
+block content
+    div.row.tm-gallery
+        div.tm-gallery-page(id="tm-gallery-page-pizza")
+            if productos.length > 0
+                each menuItem in productos
+                    article.col-lg-3.col-md-4.col-sm-6.col-12.tm-gallery-item
+                        figure
+                            img.img-fluid.tm-gallery-img(src=menuItem.img, alt="img")
+                            figcaption
+                                h4.tm-gallery-title #{menuItem.title}
+                                p.tm-gallery-description #{menuItem.description}
+                                p.tm-gallery-price $ #{menuItem.price}
+                                a.tm-gallery-price(href='/admin/edit-product/'+ menuItem.id + '?edit=true') Editar
+                                form(action="/admin/delete-product" method="POST") 
+                                    input(type="hidden", name="productId", value=menuItem.id)
+                                    button.productCardBtn(type="submit") Eliminar
+            else 
+                h4 No hay productos disponibles
+                            

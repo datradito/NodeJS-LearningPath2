@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+html(lang="es")
+    head
+        meta(charset="utf-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1")
+        meta(name="theme-color", content="#fffff")
+        meta(name="description", content="Pagina de ventas hecho en base al template de Simple House.")
+        link(href="https://fonts.googleapis.com/css?family=Open+Sans:400", rel="stylesheet")
+        link(href="/css/styles.css", rel="stylesheet")
+        link(href="/css/all.min.css", rel="stylesheet")
+
+        block styles
+        block pageTitle
+    body
+        main.container
+            ul
+                li 
+                    a(href="/") Tienda
+                if isLoggedIn
+                    li 
+                        a(href="/admin/modify-products") Modificar productos
+                    li 
+                        a(href="/cart") Carrito
+                    li 
+                        a(href="/admin/add-product") Añadir producto
+                    li 
+                        a(href="/admin/orders") orders
+                    //li 
+                        a(href="/log-out") Cerrar sesión
+                else
+                    li 
+                        a(href="/auth/log-in") Iniciar sesión
+            block content
+        footer.tm-footer.text-center
+            p Copyright: 2020 Simple House | Design: 
+            a(href="https://templatemo.com" rel="nofollow") TemplateMo
+        
+            
+        
