@@ -5,19 +5,15 @@ h2 {
 
 .grid {
   padding-top: 20px;
+  
 }
 
 .card {
   padding-top: 20px;
-  width: 50%;
-  border-radius: 20px;
-  border: 0px solid rgb(101, 100, 100);
-  border-style: groove;
+  width: 30%;
   margin: 30px auto 0px auto;
-  background-color: white;
-  text-align: center;
-  box-shadow: 10px 10px rgba(214, 212, 212, 0.6);
-}
+  text-align: center;}
+  
 
 .card__header {
   text-align: center;

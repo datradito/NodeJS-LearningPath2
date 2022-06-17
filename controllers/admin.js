@@ -4,66 +4,101 @@ const Product = require('../models/product');
 exports.getAddProduct = (req, res, next) => {
   res.render('admin/edit-product', {
     pageTitle: 'Add Product',
-    path: '/admin/edit-product',
-    formsCSS: true,
-    productCSS: true,
-    editing:false,
-    product:[],
-    activeAddProduct: true
+    path: '/admin/add-product',
+    editing: false
   });
 };
 
 exports.getEditProduct = (req, res, next) => {
-  const editMode = req.query.edit;
+  const editMode = req.query.editar;
   if (!editMode) {
     return res.redirect('/');
   }
-  const prodId = req.query.productId;
-  Product.findById(prodId)
-    .then(([rows, fieldData]) => {
-      console.log(rows[0]);
+  const prodId = req.params.productId;
+  console.log("findByPk: ", prodId);
+  Product.findByPk(prodId)
+    .then(product => {
+      if (!product) {
+        console.log("saliendo");
+        return res.redirect('/')
+      }
       res.render('admin/edit-product', {
         pageTitle: 'Edit Product',
-        product: rows[0],
-        pageTitle: rows[0].nombre,
+        path: '/admin/edit-product',
         editing: editMode,
-        path: '/admin/edit-product'
-      });
+        product: product
+      })
+    })
+
+    .catch(err => console.log(err));
+};
+
+exports.postEditProduct = (req, res, next) => {
+  const prodId = req.body.productId;
+  const updatedTitle = req.body.title;
+  const updatedPrice = req.body.price;
+  const updatedImageUrl = req.body.imageUrl;
+  const updatedDesc = req.body.description;
+  Product.findByPk(prodId)
+    .then(product => {
+      product.title = updatedTitle;
+      product.price = updatedPrice;
+      product.description = updatedDesc;
+      product.imageUrl = updatedImageUrl;
+      return product.save();
+    })
+    .then(result => {
+      console.log('UPDATED PRODUCT!');
+      res.redirect('/products');
     })
     .catch(err => console.log(err));
 };
 
+
+
+
 // funcion que carga en json el producto que viene de 
 // add-product
 exports.postAddProduct = (req, res, next) => {
-  const nombre = req.body.nombre;
-  const imagen = req.body.imagen;
-  const precio = req.body.precio;
-  const descripcion = req.body.descripcion;
-  const edad = req.body.edad;
-  const product = new Product(null, nombre, edad, descripcion, imagen, precio);
-  product
-  .save()
-  .then(()=>{
-    res.redirect('/');
+  const title = req.body.title;
+  const price = req.body.price;
+  const imageUrl = req.body.imageUrl;
+  const description = req.body.description;
+  Product.create({
+    title: title,
+    price: price,
+    imageUrl: imageUrl,
+    description: description
   })
-  .catch(err=> console.log(err));
-  res.redirect('/');
-};
+  .then(result => {
+    console.log(result);
+    res.redirect('/admin/products')
+  })
+    .catch(err => {
+      console.log(err);
+    })
+}
 
+
+
+//redirige a shop/product-lis para no duplicar vistas
 exports.getProducts = (req, res, next) => {
-  Product.fetchAll(products => {
-    res.render('admin/products', {
-      prods: products,
-      pageTitle: 'Admin Products',
-      path: '/products'
-    });
-  });
+  res.redirect('/products');
 };
 
 
 exports.postDeleteProduct = (req, res, next) => {
+  console.log("borrando producto");
   const prodId = req.body.productId;
-  Product.deleteById(prodId);
-  res.redirect('/products');
+  Product.findByPk(prodId)
+  .then(product=>{
+  return product.destroy();
+  })
+  .then(result => {
+    console.log('DESTROYED PRODUCT');
+    res.redirect('/products');
+  })
+  .catch(err => console.log(err));
 };
+
+  

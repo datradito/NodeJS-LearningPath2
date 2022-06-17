@@ -7,33 +7,29 @@
     <%- include('../includes/navigation.ejs') %>
  
      <main   class="transparente">
-        <h1>Agregar o editar producto</h1>
-         <form class="product-form edit-product" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
-             <div class="form-control">
-                 <label for="title">articulo</label></div>
-                 <input type="text" name="nombre" id="nombre" value="<% if (editing) { %><%= product.nombre %><% } %>"></br></br>
-             </div>
-             <div class="form-control">
-                <label for="edad">edad</label></br>
-                <input type="number" name="edad" id="edad" value="<% if (editing) { %><%= product.edad %><% } %>"></br></br>
+        
+        <form class="product-form edit-product" action="/admin/<% if (editing) { %>edit-product<% } else { %>add-product<% } %>" method="POST">
+            <div class="form-control">
+                <label for="title">articulo</label></div>
+                <input type="text" name="title" id="title" value="<% if (editing) { %><%= product.title %><% } %>"></br></br>
             </div>
-             <div class="form-control">
-                 <label for="imageUrl">Image URL</label></br>
-                 <input type="text" name="imagen" id="imagen" value="<% if (editing) { %><%= product.imagen %><% } %>"></br></br>
-             </div>
-             <div class="form-control">
-                 <label for="price">precio</label></br>
-                 <input type="number" name="precio" id="precio" step="0.01" value="<% if (editing) { %><%= product.precio %><% } %>"></br></br>
-             </div>
-             <div class="form-control">
-                 <label for="description">descripcion</label></br>
-                 <textarea name="descripcion" id="descripcion" rows="5" cols="20"><% if (editing) { %><%= product.descripcion %><% } %></textarea></br></br>
-             </div>
-             <% if (editing) { %>
-                 <input type="hidden" value="<%= product.id %>" name="productId">
-             <% } %>
- 
-             <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>agregar<% } %></button>
-         </form>
+            <div class="form-control">
+                <label for="imageUrl">Imagen URL</label></br>
+                <input type="text" name="imageUrl" id="imageUrl" value="<% if (editing) { %><%= product.imageUrl %><% } %>"></br></br>
+            </div>
+            <div class="form-control">
+                <label for="price">precio</label></br>
+                <input type="number" name="price" id="price" step="0.01" value="<% if (editing) { %><%= product.price %><% } %>"></br></br>
+            </div>
+            <div class="form-control">
+                <label for="description">descripcion</label></br>
+                <textarea name="description" id="description" rows="5" cols="20"><% if (editing) { %><%= product.description %><% } %></textarea></br></br>
+            </div>
+            <% if (editing) { %>
+                <input type="hidden" value="<%= product.id %>" name="productId">
+            <% } %>
+
+            <button class="btn" type="submit"><% if (editing) { %>Update Product<% } else { %>agregar<% } %></button>
+        </form>
      </main>
 <%- include('../includes/end.ejs') %>

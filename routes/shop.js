@@ -22,6 +22,4 @@ router.get('/cart', shopController.getCart);
 // se activa cuando se hace click en añadir al carrito en product details
 router.post('/cart', shopController.postCart);
 
-router.post('/shop/delete/:productId', shopController.postCartDeleteProduct);
-
 module.exports = router;

@@ -5,20 +5,25 @@
     <body class="imagenbackground">
         <%- include('../includes/navigation.ejs') %>
         <main class="centered transparente">
-            <h1>Detalles de: <%- product.nombre %></h1>
-            <hr>
-            <div>
-                <img scr="<%- product.imageUrl %>"  alt="<%- product.title %>">
-            </div>
-            <img class="imagen-detalle" src="<%- product.imagen %>" alt="<%- product.nombre %>"/>
-            <h2>Precio: <%- product.precio %></h2>
-            <p>Edad: <%- product.edad %></p>
-            <p>Descripcion: <%- product.descripcion %></p>
-            <form action="/shop/delete/<%- product.id %>" method="post">
+            <h1>
+                 <%- product.title %></h1>
+            
+                 <br>
+            
+            <img class="imagen-detalle" src="<%- product.imageUrl %>" alt="<%- product.title %>"/>
+            <h2>Precio: <%- product.price %></h2>
+            <p>Descripcion: <%- product.description %></p>
+            
+            <form action="/admin/edit-product/<%- product.id %>?edit=true" method="get">
+                <input type="hidden" name="editar" id="editar" value="true" />
+                <input type="hidden" value="<%- product.id %>" name="productId" id="productId"/>
+                <button class="btn" type="submit">editar</button>
+            </form>
+            
+            <form action="/admin/delete-product" method="post">
                 <input type="hidden" value="<%- product.id %>" name="productId" id="productId"/>
                 <button class="btn" type="submit">Borrar elemento</button>
             </form>
-            <a href="http://"></a>
                  
         </main>
         

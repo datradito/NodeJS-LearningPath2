@@ -12,14 +12,14 @@ router.get('/add-product', adminController.getAddProduct);
 // /admin/products => GET
 router.get('/products', adminController.getProducts);
 
-// ruta para editar productos
 router.get('/edit-product/:productId', adminController.getEditProduct);
+
+// ruta para editar productos
+router.post('/edit-product', adminController.postEditProduct);
 
 // estos post son para recibir datos de formularios
 // /admin/add-product => POST
 router.post('/add-product', adminController.postAddProduct);
-
-//router.get('/edit-product/:productId', adminController.getEditProduct);
 
 router.post('/delete-product', adminController.postDeleteProduct);
 
